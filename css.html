@@ -4,105 +4,63 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeQuest | Learn CSS</title>
-
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
-      font-family: "Poppins", Arial, sans-serif;
-      background: linear-gradient(135deg, #06b6d4, #3b82f6);
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
       color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      margin: 0;
+      text-align: center;
+      padding-bottom: 50px;
     }
 
     header {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255,255,255,0.1);
       backdrop-filter: blur(6px);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
     }
-    header h1 { font-size: 1.5rem; font-weight: 700; }
+
     nav a {
       color: #fff;
       text-decoration: none;
       margin: 0 0.8rem;
       font-weight: 500;
-      transition: color 0.3s;
     }
+
     nav a:hover { color: #ffd54f; }
 
-    .content {
-      flex: 1;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
+    h2 { font-size: 2.5rem; margin-top: 2rem; }
+    p { max-width: 700px; margin: 1rem auto; }
 
-    .content h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .content p {
-      margin-bottom: 1rem;
-      line-height: 1.7;
-      font-size: 1.1rem;
-      opacity: 0.95;
-    }
-
-    .example-box {
-      background: rgba(255, 255, 255, 0.15);
-      border-left: 6px solid #ffeb3b;
-      padding: 1rem;
-      border-radius: 10px;
-      margin-top: 1rem;
-      font-family: "Courier New", monospace;
-    }
-
-    .demo-container {
-      display: flex;
-      justify-content: space-around;
-      margin: 2rem 0;
-      flex-wrap: wrap;
-    }
-
-    .box {
-      width: 250px;
-      height: 150px;
-      margin: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-
-    .before {
-      background: #f5f5f5;
+    .example {
+      background: #fff;
       color: #333;
-      border: 2px dashed #999;
+      border-radius: 10px;
+      padding: 1rem;
+      margin: 2rem auto;
+      max-width: 600px;
+      text-align: left;
     }
 
-    .after {
-      background: linear-gradient(135deg, #ffb300, #ff7043);
-      color: white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transform: scale(1.05);
+    .styled-box {
+      background: #ffeb3b;
+      color: #333;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      display: inline-block;
     }
 
     footer {
-      text-align: center;
+      background: rgba(255,255,255,0.1);
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.15);
-      font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
     }
   </style>
 </head>
@@ -114,47 +72,37 @@
       <a href="html.html">HTML</a>
       <a href="css.html">CSS</a>
       <a href="js.html">JavaScript</a>
+      <a href="c.html">C</a>
+      <a href="cpp.html">C++</a>
+      <a href="csharp.html">C#</a>
+      <a href="quest.html">Quest</a>
       <a href="about.html">About</a>
     </nav>
   </header>
 
-  <section class="content">
-    <h2>What is CSS?</h2>
-    <p><strong>CSS (Cascading Style Sheets)</strong> is what makes your web pages beautiful! It controls colors, fonts, layouts, and the overall design of your website. Without CSS, every page would look plain and unstyled.</p>
+  <h2>What is CSS?</h2>
+  <p><b>CSS</b> (Cascading Style Sheets) styles your webpage — it’s what makes it look beautiful and organized!</p>
 
-    <p>Here’s an example of a simple webpage before and after adding CSS:</p>
-
-    <div class="demo-container">
-      <div class="box before">
-        <p><strong>Before CSS</strong><br>Plain and unstyled.</p>
-      </div>
-      <div class="box after">
-        <p><strong>After CSS</strong><br>Colorful and modern!</p>
-      </div>
-    </div>
-
-    <p>We use CSS rules to style HTML elements. Each rule has a <strong>selector</strong> (which element to style) and a set of <strong>properties</strong> (what to change).</p>
-
-    <div class="example-box">
-<pre>
-h1 {
-  color: #ff7043;
-  text-align: center;
-  font-family: "Poppins", sans-serif;
-}
-
+  <div class="example">
+    <h3>Example CSS:</h3>
+    <pre>
 p {
-  color: #333;
-  line-height: 1.6;
+  color: blue;
+  font-size: 18px;
 }
-</pre>
-    </div>
 
-    <p>🎨 <strong>Tip:</strong> You can write CSS inside a <code>&lt;style&gt;</code> tag in your HTML file, or link a separate <code>.css</code> file using <code>&lt;link&gt;</code>.</p>
-  </section>
+button {
+  background: gold;
+  padding: 10px;
+  border-radius: 5px;
+}
+    </pre>
+  </div>
 
-  <footer>
-    © 2025 CodeQuest | Learn Coding the Fun Way
-  </footer>
+  <div class="styled-box">
+    This box is styled using CSS! 🎨
+  </div>
+
+  <footer>© 2025 CodeQuest | Learn Coding the Fun Way</footer>
 </body>
 </html>

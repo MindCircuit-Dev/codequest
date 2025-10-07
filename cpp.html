@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeQuest | Learn C++</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #312e81);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #a5b4fc; }
+
+    .container {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .example-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, background 0.3s;
+    }
+
+    .example-box:hover {
+      transform: scale(1.02);
+      background: rgba(255,255,255,0.15);
+    }
+
+    pre {
+      background: #1e293b;
+      color: #a5b4fc;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .output {
+      background: #6366f1;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      background: #a5b4fc;
+      border: none;
+      color: #0f172a;
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin: 1rem auto;
+    }
+
+    button:hover {
+      background: #818cf8;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CodeQuest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="js.html">JavaScript</a>
+      <a href="c.html">C</a>
+      <a href="cpp.html">C++</a>
+      <a href="csharp.html">C#</a>
+      <a href="quest.html">Quest</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Learn C++ Language ⚙️</h2>
+    <p>C++ builds on C — adding object-oriented programming and more flexibility. Let’s see how it works!</p>
+
+    <div class="example-box">
+      <h3>🧩 Example 1: Basic C++ Program</h3>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, CodeQuest Explorer!";
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput('output1')">Run Code ▶️</button>
+      <div id="output1" class="output">Hello, CodeQuest Explorer!</div>
+    </div>
+
+    <div class="example-box">
+      <h3>💡 Example 2: Variables and Output</h3>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    string name = "Alex";
+    int age = 19;
+    cout &lt;&lt; "Name: " &lt;&lt; name &lt;&lt; "\\n";
+    cout &lt;&lt; "Age: " &lt;&lt; age;
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput('output2')">Run Code ▶️</button>
+      <div id="output2" class="output">Name: Alex<br>Age: 19</div>
+    </div>
+
+    <div class="example-box">
+      <h3>🧮 Example 3: Conditional Statements</h3>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int score = 85;
+    if(score &gt;= 75) {
+        cout &lt;&lt; "You passed!";
+    } else {
+        cout &lt;&lt; "Try again!";
+    }
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput('output3')">Run Code ▶️</button>
+      <div id="output3" class="output">You passed!</div>
+    </div>
+
+    <div class="example-box">
+      <h3>🔁 Example 4: Loop Example</h3>
+      <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    for(int i = 1; i &lt;= 5; i++) {
+        cout &lt;&lt; "Number: " &lt;&lt; i &lt;&lt; "\\n";
+    }
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput('output4')">Run Code ▶️</button>
+      <div id="output4" class="output">Number: 1<br>Number: 2<br>Number: 3<br>Number: 4<br>Number: 5</div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 CodeQuest | Learn Coding the Fun Way
+  </footer>
+
+  <script>
+    function showOutput(id) {
+      document.getElementById(id).style.display = "block";
+    }
+  </script>
+</body>
+</html>

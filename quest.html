@@ -1,188 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeQuest | Quests</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CodeQuest Challenge</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: "Poppins", sans-serif;
-      background: linear-gradient(135deg, #4f46e5, #9333ea);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-    }
-    header h1 { font-size: 1.5rem; font-weight: 700; }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #ffd54f; }
-
-    .content {
-      flex: 1;
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      text-align: center;
-      opacity: 0.9;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-
-    .quest {
-      background: rgba(255, 255, 255, 0.15);
-      padding: 1.5rem;
-      border-radius: 15px;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: fadeIn 1s ease;
-    }
-
-    .quest h3 {
-      margin-bottom: 0.5rem;
-      color: #ffeb3b;
-    }
-
-    .quest pre {
-      background: rgba(0,0,0,0.3);
-      padding: 0.8rem;
-      border-radius: 8px;
-      overflow-x: auto;
-      margin-bottom: 1rem;
-      font-family: "Courier New", monospace;
-    }
-
-    input {
-      padding: 0.6rem;
-      width: 100%;
-      border-radius: 8px;
-      border: none;
-      margin-bottom: 1rem;
-    }
-
-    button {
-      background: #ffd54f;
-      color: #333;
-      border: none;
-      padding: 0.7rem 1.2rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    button:hover { background: #ffb300; transform: scale(1.05); }
-
-    .feedback {
-      margin-top: 0.8rem;
-      font-weight: 600;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(-45deg, #4f46e5, #6d28d9, #3b82f6, #6366f1);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+  }
+  @keyframes gradient {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(255,255,255,0.2);
+  }
+  .card {
+    background: rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  input {
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    width: 80%;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+  button {
+    background: #ffd54f;
+    color: #333;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    font-weight: 600;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+  }
+  button:hover {
+    background: #ffeb3b;
+    transform: scale(1.05);
+  }
+  .feedback {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
+  .correct { color: #4ade80; }
+  .wrong { color: #f87171; }
+  .progress {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>CodeQuest</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="html.html">HTML</a>
-      <a href="css.html">CSS</a>
-      <a href="js.html">JavaScript</a>
-      <a href="quest.html">Quest</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+<h1>🌟 CodeQuest Challenge 🌟</h1>
+<div id="quiz-card" class="card">
+  <p id="question-text">Loading question...</p>
+  <input type="text" id="answer" placeholder="Type your answer here" />
+  <button onclick="submitAnswer()">Submit</button>
+  <p id="feedback" class="feedback"></p>
+  <p id="progress" class="progress"></p>
+</div>
 
-  <section class="content">
-    <h2>Your Coding Quests ⚔️</h2>
-    <p>Test your knowledge and see how well you’ve learned HTML, CSS, and JavaScript!</p>
+<script>
+const questions = [
+  { q: "What does HTML stand for?", a: "hypertext markup language" },
+  { q: "Which CSS property changes the background color?", a: "background-color" },
+  { q: "Which JavaScript function displays a message box?", a: "alert" },
+  { q: "Which tag is used to display an image in HTML?", a: "img" },
+  { q: "Which CSS property makes text bold?", a: "font-weight" }
+];
 
-    <!-- Quest 1 -->
-    <div class="quest">
-      <h3>Quest 1: HTML Basics</h3>
-      <p>What tag is used to display the largest heading?</p>
-      <pre>&lt; ? &gt;This is a heading&lt;/ ? &gt;</pre>
-      <input type="text" id="q1" placeholder="Your answer (e.g., h1)" />
-      <button onclick="checkAnswer('q1', 'h1')">Check Answer</button>
-      <div id="feedback1" class="feedback"></div>
-    </div>
+let current = 0;
 
-    <!-- Quest 2 -->
-    <div class="quest">
-      <h3>Quest 2: CSS Styling</h3>
-      <p>Which property changes the background color of a webpage?</p>
-      <pre>body { _______: lightblue; }</pre>
-      <input type="text" id="q2" placeholder="Your answer (e.g., background-color)" />
-      <button onclick="checkAnswer('q2', 'background-color')">Check Answer</button>
-      <div id="feedback2" class="feedback"></div>
-    </div>
+function showQuestion() {
+  const q = questions[current];
+  document.getElementById("question-text").textContent = q.q;
+  document.getElementById("answer").value = "";
+  document.getElementById("feedback").textContent = "";
+  document.getElementById("progress").textContent = `Question ${current + 1} of ${questions.length}`;
+}
 
-    <!-- Quest 3 -->
-    <div class="quest">
-      <h3>Quest 3: JavaScript Fun</h3>
-      <p>Which function shows a popup message?</p>
-      <pre>________("Hello, World!");</pre>
-      <input type="text" id="q3" placeholder="Your answer (e.g., alert)" />
-      <button onclick="checkAnswer('q3', 'alert')">Check Answer</button>
-      <div id="feedback3" class="feedback"></div>
-    </div>
-  </section>
+function submitAnswer() {
+  const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+  const correctAnswer = questions[current].a.toLowerCase();
+  const feedback = document.getElementById("feedback");
+  const card = document.getElementById("quiz-card");
 
-  <footer>
-    © 2025 CodeQuest | Complete the Quest, Master the Code!
-  </footer>
+  if (userAnswer === correctAnswer) {
+    feedback.textContent = "✅ Correct! Nice work!";
+    feedback.className = "feedback correct";
+  } else {
+    feedback.textContent = `❌ Oops! The correct answer is "${questions[current].a}".`;
+    feedback.className = "feedback wrong";
+  }
 
-  <script>
-    function checkAnswer(inputId, correctAnswer) {
-      const userAnswer = document.getElementById(inputId).value.trim().toLowerCase();
-      const feedbackId = "feedback" + inputId.slice(1);
-      const feedback = document.getElementById(feedbackId);
-
-      if (userAnswer === correctAnswer) {
-        feedback.textContent = "✅ Correct! Great job, coder!";
-        feedback.style.color = "#00e676";
+  setTimeout(() => {
+    card.classList.add("fade-out");
+    setTimeout(() => {
+      current++;
+      if (current < questions.length) {
+        card.classList.remove("fade-out");
+        showQuestion();
       } else {
-        feedback.textContent = "❌ Oops! Try again.";
-        feedback.style.color = "#ff5252";
+        endQuiz();
       }
-    }
-  </script>
+    }, 600);
+  }, 1200);
+}
+
+function endQuiz() {
+  document.getElementById("quiz-card").innerHTML = `
+    <h2>🎉 Congratulations, Coder! 🎉</h2>
+    <p>You finished the CodeQuest Challenge!</p>
+    <button onclick="restart()">Play Again 🔁</button>
+  `;
+}
+
+function restart() {
+  current = 0;
+  document.getElementById("quiz-card").classList.remove("fade-out");
+  showQuestion();
+}
+
+showQuestion();
+</script>
 </body>
 </html>

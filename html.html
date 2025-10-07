@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeQuest | Learn HTML</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #ff6f61, #ff9a76);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffeb3b; }
+
+    .content {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .example-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 6px solid #ffeb3b;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      font-family: "Courier New", monospace;
+    }
+
+    .illustration {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .illustration div {
+      display: inline-block;
+      margin: 1rem;
+      padding: 1rem 1.5rem;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .illustration div span {
+      display: block;
+      font-size: 1rem;
+      color: #ffeb3b;
+      margin-top: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CodeQuest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="js.html">JavaScript</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>What is HTML?</h2>
+    <p><strong>HTML (HyperText Markup Language)</strong> is the foundation of every web page. It’s like the “skeleton” of a website — it structures the content that you see on the screen such as text, images, links, and more.</p>
+
+    <div class="illustration">
+      <div>📄<span>HTML Document</span></div>
+      <div>🧱<span>Elements & Tags</span></div>
+      <div>🔗<span>Links</span></div>
+      <div>🖼️<span>Images</span></div>
+    </div>
+
+    <p>Each web page is made up of <strong>elements</strong>. These elements are enclosed in tags like <code>&lt;p&gt;</code> for paragraphs or <code>&lt;h1&gt;</code> for headings.</p>
+
+    <div class="example-box">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My First Web Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello, World!&lt;/h1&gt;
+    &lt;p&gt;This is my very first webpage using HTML.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </div>
+
+    <p>🎯 <strong>Tip:</strong> HTML by itself only gives structure. You’ll use <strong>CSS</strong> to style it and <strong>JavaScript</strong> to make it interactive.</p>
+  </section>
+
+  <footer>
+    © 2025 CodeQuest | Learn Coding the Fun Way
+  </footer>
+</body>
+</html>

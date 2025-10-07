@@ -28,16 +28,22 @@
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
+      flex-wrap: wrap;
     }
     header h1 {
       font-size: 1.5rem;
       font-weight: 700;
       letter-spacing: 1px;
     }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
     nav a {
       color: #fff;
       text-decoration: none;
-      margin: 0 0.8rem;
+      margin: 0 0.6rem;
       font-weight: 500;
       transition: color 0.3s;
     }
@@ -67,8 +73,8 @@
 
     .button-group {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
     }
 
@@ -110,6 +116,9 @@
       <a href="html.html">HTML</a>
       <a href="css.html">CSS</a>
       <a href="js.html">JavaScript</a>
+      <a href="c.html">C</a>
+      <a href="cpp.html">C++</a>
+      <a href="csharp.html">C#</a>
       <a href="quest.html">Quest</a>
       <a href="about.html">About</a>
     </nav>
@@ -117,11 +126,14 @@
 
   <section class="hero">
     <h2>Welcome to CodeQuest!</h2>
-    <p>Embark on a fun learning adventure that teaches you the basics of web coding — HTML, CSS, and JavaScript — step by step.</p>
+    <p>Embark on a fun learning adventure that teaches you the basics of web and programming languages — HTML, CSS, JavaScript, C, C++, and C# — step by step.</p>
     
     <div class="button-group">
       <button onclick="startJourney()">Begin Your Study Journey 🚀</button>
       <button onclick="startChallenge()">Take the Challenge 🧩</button>
+      <button onclick="goToLanguage('c.html')">Learn C 🧠</button>
+      <button onclick="goToLanguage('cpp.html')">Learn C++ 💡</button>
+      <button onclick="goToLanguage('csharp.html')">Learn C# ⚙️</button>
     </div>
   </section>
 
@@ -138,6 +150,11 @@
     function startChallenge() {
       alert("Ready to test your skills? Let's take on the challenge!");
       window.location.href = "quest.html"; // Go to challenge page
+    }
+
+    function goToLanguage(page) {
+      alert("Get ready to explore " + page.replace('.html', '').toUpperCase() + "!");
+      window.location.href = page;
     }
   </script>
 </body>

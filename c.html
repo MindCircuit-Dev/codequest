@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeQuest | Learn C Language</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #38bdf8; }
+
+    .container {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      text-align: center;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .example-box {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    pre {
+      background: #1e293b;
+      color: #38bdf8;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+
+    .output {
+      background: #0ea5e9;
+      color: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    button {
+      background: #38bdf8;
+      border: none;
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+      display: block;
+      margin: 1rem auto;
+    }
+
+    button:hover {
+      background: #0ea5e9;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CodeQuest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="js.html">JavaScript</a>
+      <a href="c.html">C</a>
+      <a href="cpp.html">C++</a>
+      <a href="csharp.html">C#</a>
+      <a href="quest.html">Quest</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Learn the C Language 🧠</h2>
+    <p>C is one of the most powerful programming languages — used to build operating systems, games, and more!</p>
+
+    <div class="example-box">
+      <h3>🧩 Example 1: Basic C Program</h3>
+      <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, CodeQuest Learner!");
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput1()">Run Code ▶️</button>
+      <div id="output1" class="output" style="display:none;">
+        Hello, CodeQuest Learner!
+      </div>
+    </div>
+
+    <div class="example-box">
+      <h3>⚙️ Example 2: Variables in C</h3>
+      <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int age = 18;
+    printf("Your age is %d", age);
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput2()">Run Code ▶️</button>
+      <div id="output2" class="output" style="display:none;">
+        Your age is 18
+      </div>
+    </div>
+
+    <div class="example-box">
+      <h3>🧮 Example 3: Simple Math Operation</h3>
+      <pre>
+#include &lt;stdio.h&gt;
+
+int main() {
+    int a = 5, b = 3;
+    int sum = a + b;
+    printf("The sum is %d", sum);
+    return 0;
+}
+      </pre>
+      <button onclick="showOutput3()">Run Code ▶️</button>
+      <div id="output3" class="output" style="display:none;">
+        The sum is 8
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 CodeQuest | Learn Coding the Fun Way
+  </footer>
+
+  <script>
+    function showOutput1() {
+      document.getElementById("output1").style.display = "block";
+    }
+    function showOutput2() {
+      document.getElementById("output2").style.display = "block";
+    }
+    function showOutput3() {
+      document.getElementById("output3").style.display = "block";
+    }
+  </script>
+</body>
+</html>

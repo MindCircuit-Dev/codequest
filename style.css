@@ -3,9 +3,10 @@
 /* ---------------------- */
 body {
   margin: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", Arial, sans-serif;
   background: linear-gradient(135deg, #4f46e5, #6366f1);
   color: white;
+  min-height: 100vh;
 }
 
 /* ---------------------- */
@@ -50,13 +51,9 @@ body {
 .main-content {
   margin-left: 250px; /* leave space for sidebar */
   padding: 40px;
-  flex-grow: 1;
-  text-align: left; /* content aligned to left */
+  text-align: left;
 }
 
-/* ---------------------- */
-/* Headings and Paragraphs*/
-/* ---------------------- */
 .main-content h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -65,24 +62,64 @@ body {
 .main-content p {
   font-size: 1.2rem;
   line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 /* ---------------------- */
 /* Buttons Styling        */
 /* ---------------------- */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .button-group button {
   background-color: #ffd54f;
   border: none;
   padding: 12px 20px;
-  margin: 10px 10px 0 0;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .button-group button:hover {
   background-color: #fff176;
   color: #4f46e5;
+  transform: translateY(-3px);
+}
+
+/* ---------------------- */
+/* Footer Styling         */
+/* ---------------------- */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ---------------------- */
+/* Responsive Design      */
+/* ---------------------- */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 10px;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

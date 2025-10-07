@@ -64,6 +64,14 @@
       margin-bottom: 2rem;
       opacity: 0.9;
     }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .hero button {
       background: #ffd54f;
       color: #333;
@@ -102,6 +110,7 @@
       <a href="html.html">HTML</a>
       <a href="css.html">CSS</a>
       <a href="js.html">JavaScript</a>
+      <a href="quest.html">Quest</a>
       <a href="about.html">About</a>
     </nav>
   </header>
@@ -109,7 +118,11 @@
   <section class="hero">
     <h2>Welcome to CodeQuest!</h2>
     <p>Embark on a fun learning adventure that teaches you the basics of web coding — HTML, CSS, and JavaScript — step by step.</p>
-    <button onclick="startJourney()">Begin Your Journey 🚀</button>
+    
+    <div class="button-group">
+      <button onclick="startJourney()">Begin Your Journey 🚀</button>
+      <button onclick="startChallenge()">Take the Challenge 🧩</button>
+    </div>
   </section>
 
   <footer>
@@ -119,7 +132,12 @@
   <script>
     function startJourney() {
       alert("Great! Let’s start your coding adventure!");
-      window.location.href = "html.html"; // link to your next lesson page
+      window.location.href = "html.html"; // Go to first lesson
+    }
+
+    function startChallenge() {
+      alert("Ready to test your skills? Let's take on the challenge!");
+      window.location.href = "quest.html"; // Go to challenge page
     }
   </script>
 </body>

@@ -1,15 +1,19 @@
+/* ---------------------- */
+/* General Body Styling   */
+/* ---------------------- */
 body {
-  display: flex;
   margin: 0;
   font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #4f46e5, #6366f1);
   color: white;
 }
 
-/* Sidebar */
+/* ---------------------- */
+/* Sidebar Styling        */
+/* ---------------------- */
 .sidebar {
   width: 220px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(6px);
   height: 100vh;
   position: fixed;
@@ -40,10 +44,45 @@ body {
   color: #ffd54f;
 }
 
-/* Main content */
+/* ---------------------- */
+/* Main Content Styling   */
+/* ---------------------- */
 .main-content {
-  margin-left: 250px; /* Leave space for sidebar */
+  margin-left: 250px; /* leave space for sidebar */
   padding: 40px;
   flex-grow: 1;
-  text-align: center;
+  text-align: left; /* content aligned to left */
+}
+
+/* ---------------------- */
+/* Headings and Paragraphs*/
+/* ---------------------- */
+.main-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.main-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* ---------------------- */
+/* Buttons Styling        */
+/* ---------------------- */
+.button-group button {
+  background-color: #ffd54f;
+  border: none;
+  padding: 12px 20px;
+  margin: 10px 10px 0 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-group button:hover {
+  background-color: #fff176;
+  color: #4f46e5;
 }

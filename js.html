@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeQuest | Learn JavaScript</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: linear-gradient(135deg, #3b82f6, #9333ea);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(6px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 0.8rem;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #ffd54f; }
+
+    .content {
+      flex: 1;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+      line-height: 1.7;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    .demo-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    button {
+      background-color: #ffd54f;
+      border: none;
+      color: #333;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #ffb300;
+      transform: scale(1.05);
+    }
+
+    #colorBox {
+      width: 250px;
+      height: 150px;
+      border-radius: 10px;
+      background-color: #fff;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 600;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .example-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-left: 6px solid #ffeb3b;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      font-family: "Courier New", monospace;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.15);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>CodeQuest</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="html.html">HTML</a>
+      <a href="css.html">CSS</a>
+      <a href="js.html">JavaScript</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="content">
+    <h2>What is JavaScript?</h2>
+    <p><strong>JavaScript</strong> is the language that adds <em>interactivity</em> to your website. It can respond to clicks, change colors, show messages, and make webpages come alive!</p>
+
+    <p>Here’s a demo showing what JavaScript can do 👇</p>
+
+    <div class="demo-container">
+      <button onclick="showAlert()">Show Alert</button>
+      <button onclick="changeColor()">Change Color</button>
+      <button onclick="updateText()">Change Text</button>
+    </div>
+
+    <div id="colorBox">Hello, CodeQuest!</div>
+
+    <p>These buttons are connected to JavaScript functions using the <code>onclick</code> attribute.</p>
+
+    <div class="example-box">
+<pre>
+// This is a JavaScript comment
+
+function showAlert() {
+  alert("Welcome to CodeQuest! 🚀");
+}
+
+function changeColor() {
+  const box = document.getElementById("colorBox");
+  box.style.backgroundColor = "#ff7043";
+  box.style.color = "#fff";
+}
+
+function updateText() {
+  document.getElementById("colorBox").innerText = "Text Updated!";
+}
+</pre>
+    </div>
+
+    <p>💡 <strong>Tip:</strong> Always place your JavaScript code inside <code>&lt;script&gt;</code> tags, usually at the end of your HTML document.</p>
+  </section>
+
+  <footer>
+    © 2025 CodeQuest | Learn Coding the Fun Way
+  </footer>
+
+  <script>
+    function showAlert() {
+      alert("Welcome to CodeQuest! 🚀");
+    }
+
+    function changeColor() {
+      const box = document.getElementById("colorBox");
+      const colors = ["#ff7043", "#29b6f6", "#66bb6a", "#ab47bc"];
+      const random = Math.floor(Math.random() * colors.length);
+      box.style.backgroundColor = colors[random];
+      box.style.color = "#fff";
+    }
+
+    function updateText() {
+      const box = document.getElementById("colorBox");
+      box.innerText = "Text Updated!";
+    }
+  </script>
+</body>
+</html>

@@ -13,22 +13,25 @@ body {
 /* Sidebar Styling        */
 /* ---------------------- */
 .sidebar {
-  width: 220px;
+  width: 260px; /* slightly wider */
   background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(8px);
   height: 100vh;
   position: fixed;
   left: 0;
   top: 0;
-  padding: 20px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  border-radius: 0 15px 15px 0;
+  transition: transform 0.3s ease;
 }
 
 .sidebar h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
   color: #ffd54f;
 }
 
@@ -36,26 +39,42 @@ body {
   display: block;
   color: white;
   text-decoration: none;
-  margin: 8px 0;
-  font-weight: 500;
-  transition: color 0.3s;
+  margin: 12px 0;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
 }
 
 .sidebar nav a:hover {
-  color: #ffd54f;
+  color: #4f46e5;
+  background: #ffd54f;
+  transform: translateX(5px);
 }
 
 /* ---------------------- */
 /* Main Content Styling   */
 /* ---------------------- */
 .main-content {
-  margin-left: 250px; /* leave space for sidebar */
-  padding: 40px;
+  margin-left: 280px; /* leave space for wider sidebar */
+  padding: 50px;
   text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border-radius: 15px;
+  margin-top: 20px;
+  margin-right: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
 }
 
 .main-content h1 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   margin-bottom: 20px;
 }
 
@@ -75,18 +94,19 @@ body {
 }
 
 .button-group button {
-  background-color: #ffd54f;
+  background: #ffd54f;
   border: none;
-  padding: 12px 20px;
+  padding: 14px 24px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.3s, transform 0.2s;
+  border-radius: 12px;
+  transition: background 0.3s, transform 0.2s, color 0.3s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .button-group button:hover {
-  background-color: #fff176;
+  background: #fff176;
   color: #4f46e5;
   transform: translateY(-3px);
 }
@@ -100,22 +120,35 @@ footer {
   background: rgba(255, 255, 255, 0.1);
   margin-top: 40px;
   font-size: 0.9rem;
+  border-radius: 10px;
+  backdrop-filter: blur(4px);
 }
 
 /* ---------------------- */
 /* Responsive Design      */
 /* ---------------------- */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 900px) {
   .sidebar {
     width: 100%;
     height: auto;
     position: relative;
-    padding: 10px;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 15px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .sidebar nav a {
+    margin: 8px 5px;
   }
 
   .main-content {
     margin-left: 0;
-    padding: 20px;
+    margin-top: 20px;
+    margin-right: 20px;
+    padding: 25px;
+    border-radius: 12px;
   }
 
   .button-group {

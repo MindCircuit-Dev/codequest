@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeQuest | Choose Your Challenge</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      margin-bottom: 1rem;
+      color: #ffeb3b;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0.9;
+    }
+
+    .language-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      max-width: 600px;
+    }
+
+    button {
+      background: #ffd54f;
+      color: #333;
+      border: none;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+      background: #ffeb3b;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧩 Choose Your CodeQuest Challenge</h1>
+  <p>Select a language below to start your quiz adventure!</p>
+
+  <div class="language-list">
+    <button onclick="startQuiz('html')">HTML</button>
+    <button onclick="startQuiz('css')">CSS</button>
+    <button onclick="startQuiz('js')">JavaScript</button>
+    <button onclick="startQuiz('c')">C</button>
+    <button onclick="startQuiz('cpp')">C++</button>
+    <button onclick="startQuiz('csharp')">C#</button>
+  </div>
+
+  <footer>
+    © 2025 CodeQuest | Choose Your Coding Challenge
+  </footer>
+
+  <script>
+    function startQuiz(language) {
+      switch (language) {
+        case 'html':
+          window.location.href = "quest.html";
+          break;
+        case 'css':
+          window.location.href = "quest-css.html";
+          break;
+        case 'js':
+          window.location.href = "quest-js.html";
+          break;
+        case 'c':
+          window.location.href = "quest-c.html";
+          break;
+        case 'cpp':
+          window.location.href = "quest-cpp.html";
+          break;
+        case 'csharp':
+          window.location.href = "quest-csharp.html";
+          break;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,161 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CodeQuest Challenge</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeQuest | Quests</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
 
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(-45deg, #4f46e5, #6d28d9, #3b82f6, #6366f1);
-    background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 2rem;
-  }
-  @keyframes gradient {
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-  }
-  h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 10px rgba(255,255,255,0.2);
-  }
-  .card {
-    background: rgba(255,255,255,0.15);
-    border-radius: 16px;
-    padding: 2rem;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-    max-width: 600px;
-    width: 100%;
-    text-align: center;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  .fade-out {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  input {
-    padding: 0.6rem;
-    border: none;
-    border-radius: 8px;
-    width: 80%;
-    margin-top: 1rem;
-    font-size: 1rem;
-  }
-  button {
-    background: #ffd54f;
-    color: #333;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 10px;
-    font-weight: 600;
-    margin-top: 1rem;
-    cursor: pointer;
-    transition: transform 0.3s, background 0.3s;
-  }
-  button:hover {
-    background: #ffeb3b;
-    transform: scale(1.05);
-  }
-  .feedback {
-    margin-top: 1rem;
-    font-weight: 600;
-  }
-  .correct { color: #4ade80; }
-  .wrong { color: #f87171; }
-  .progress {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    opacity: 0.8;
-  }
-</style>
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #ffeb3b;
+    }
+
+    .quiz-container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+      max-width: 600px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.6s ease-in;
+    }
+
+    .question {
+      margin: 20px 0;
+      font-weight: 500;
+    }
+
+    button {
+      background: #ffd54f;
+      color: #333;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ffeb3b;
+      transform: translateY(-3px);
+    }
+
+    #result {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .wrong {
+      color: #ff7070;
+      font-weight: bold;
+    }
+
+    .correct {
+      color: #4caf50;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
 </head>
-
 <body>
-<h1>🌟 CodeQuest Challenge 🌟</h1>
-<div id="quiz-card" class="card">
-  <p id="question-text">Loading question...</p>
-  <input type="text" id="answer" placeholder="Type your answer here" />
-  <button onclick="submitAnswer()">Submit</button>
-  <p id="feedback" class="feedback"></p>
-  <p id="progress" class="progress"></p>
-</div>
 
-<script>
-const questions = [
-  { q: "What does HTML stand for?", a: "hypertext markup language" },
-  { q: "Which CSS property changes the background color?", a: "background-color" },
-  { q: "Which JavaScript function displays a message box?", a: "alert" },
-  { q: "Which tag is used to display an image in HTML?", a: "img" },
-  { q: "Which CSS property makes text bold?", a: "font-weight" }
-];
+  <h1>🚀 CodeQuest Challenge</h1>
+  <div class="quiz-container" id="quiz">
+    <div class="question">
+      <p>1. What does HTML stand for?</p>
+      <input type="radio" name="q1" value="A"> A) Hyper Text Markup Language<br>
+      <input type="radio" name="q1" value="B"> B) Home Tool Markup Language<br>
+      <input type="radio" name="q1" value="C"> C) Hyperlinks and Text Markup Language<br>
+    </div>
 
-let current = 0;
+    <div class="question">
+      <p>2. Which tag is used to create a hyperlink in HTML?</p>
+      <input type="radio" name="q2" value="A"> A) &lt;link&gt;<br>
+      <input type="radio" name="q2" value="B"> B) &lt;a&gt;<br>
+      <input type="radio" name="q2" value="C"> C) &lt;href&gt;<br>
+    </div>
 
-function showQuestion() {
-  const q = questions[current];
-  document.getElementById("question-text").textContent = q.q;
-  document.getElementById("answer").value = "";
-  document.getElementById("feedback").textContent = "";
-  document.getElementById("progress").textContent = `Question ${current + 1} of ${questions.length}`;
-}
+    <div class="question">
+      <p>3. CSS is used for?</p>
+      <input type="radio" name="q3" value="A"> A) Adding interactivity<br>
+      <input type="radio" name="q3" value="B"> B) Styling web pages<br>
+      <input type="radio" name="q3" value="C"> C) Storing data<br>
+    </div>
 
-function submitAnswer() {
-  const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
-  const correctAnswer = questions[current].a.toLowerCase();
-  const feedback = document.getElementById("feedback");
-  const card = document.getElementById("quiz-card");
+    <button onclick="submitQuiz()">Submit Answers</button>
+  </div>
 
-  if (userAnswer === correctAnswer) {
-    feedback.textContent = "✅ Correct! Nice work!";
-    feedback.className = "feedback correct";
-  } else {
-    feedback.textContent = `❌ Oops! The correct answer is "${questions[current].a}".`;
-    feedback.className = "feedback wrong";
-  }
+  <div id="result"></div>
 
-  setTimeout(() => {
-    card.classList.add("fade-out");
-    setTimeout(() => {
-      current++;
-      if (current < questions.length) {
-        card.classList.remove("fade-out");
-        showQuestion();
-      } else {
-        endQuiz();
+  <script>
+    function submitQuiz() {
+      const answers = {
+        q1: "A",
+        q2: "B",
+        q3: "B"
+      };
+
+      let score = 0;
+      let resultHTML = "<h2>Results</h2>";
+
+      for (let key in answers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected) {
+          if (selected.value === answers[key]) {
+            score++;
+            resultHTML += `<p class='correct'>✅ Question ${key[1]} is correct!</p>`;
+          } else {
+            resultHTML += `<p class='wrong'>❌ Question ${key[1]} is wrong.<br>
+              Your answer: <b>${selected.nextSibling.textContent.trim()}</b><br>
+              Correct answer: <b>${answers[key]}</b></p>`;
+          }
+        } else {
+          resultHTML += `<p class='wrong'>⚠️ You missed Question ${key[1]}.</p>`;
+        }
       }
-    }, 600);
-  }, 1200);
-}
 
-function endQuiz() {
-  document.getElementById("quiz-card").innerHTML = `
-    <h2>🎉 Congratulations, Coder! 🎉</h2>
-    <p>You finished the CodeQuest Challenge!</p>
-    <button onclick="restart()">Play Again 🔁</button>
-  `;
-}
+      resultHTML += `<h3>Your Score: ${score} / ${Object.keys(answers).length}</h3>`;
+      resultHTML += `
+        <button onclick="window.location.href='index.html'">🏠 Back to Home</button>
+        <button onclick="window.location.href='html.html'">📘 Study More</button>
+      `;
 
-function restart() {
-  current = 0;
-  document.getElementById("quiz-card").classList.remove("fade-out");
-  showQuestion();
-}
+      document.getElementById("quiz").style.display = "none";
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = resultHTML;
+      resultDiv.style.display = "block";
+    }
+  </script>
 
-showQuestion();
-</script>
 </body>
 </html>

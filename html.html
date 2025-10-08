@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Learn HTML | CodeQuest</title>
-
   <style>
-    /* --- BASIC RESET --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: "Poppins", Arial, sans-serif;
       background: linear-gradient(135deg, #4f46e5, #6366f1);
       color: #fff;
+      margin: 0;
+      padding: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
-
-    /* --- NAVBAR --- */
     header {
       background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(6px);
+      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
+      backdrop-filter: blur(6px);
       position: sticky;
       top: 0;
-      z-index: 10;
     }
-
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
     nav a {
       color: #fff;
       text-decoration: none;
@@ -44,73 +32,73 @@
       font-weight: 500;
       transition: color 0.3s;
     }
-
     nav a:hover { color: #ffd54f; }
 
-    /* --- MAIN CONTENT --- */
-    .container {
+    main {
+      flex: 1;
+      padding: 2rem;
       max-width: 900px;
-      margin: 60px auto;
-      padding: 25px;
+      margin: 0 auto;
+    }
+    h1, h2, h3 { color: #ffeb3b; }
+
+    .code-box {
       background: rgba(255, 255, 255, 0.1);
-      border-radius: 12px;
-      backdrop-filter: blur(4px);
-      color: white;
-      line-height: 1.6;
-    }
-
-    h2, h3 {
-      color: #ffd54f;
-      margin-bottom: 10px;
-    }
-
-    p { margin-bottom: 15px; }
-
-    pre {
-      background: rgba(0, 0, 0, 0.25);
-      padding: 12px;
-      border-radius: 6px;
-      color: #fff8e1;
-      overflow-x: auto;
-      margin-bottom: 15px;
-    }
-
-    .example {
-      background: white;
-      color: black;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-    }
-
-    ul { margin-left: 20px; margin-bottom: 20px; }
-    code { background: rgba(0, 0, 0, 0.3); padding: 4px 8px; border-radius: 5px; }
-
-    /* --- BUTTON BACK --- */
-    .back-home {
-      display: inline-block;
-      background: #ffd54f;
-      color: #333;
-      padding: 0.8rem 1.5rem;
+      padding: 1rem;
       border-radius: 8px;
+      font-family: "Courier New", monospace;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+    .example {
+      background: #fff;
+      color: #333;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+    .btn-group {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    button {
+      background: #ffd54f;
+      border: none;
+      padding: 0.8rem 1.4rem;
+      border-radius: 6px;
       font-weight: 600;
-      text-decoration: none;
+      cursor: pointer;
       transition: background 0.3s, transform 0.3s;
     }
-
-    .back-home:hover {
+    button:hover {
       background: #ffeb3b;
       transform: translateY(-3px);
     }
-
-    /* --- FOOTER --- */
+    textarea {
+      width: 100%;
+      height: 150px;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: "Courier New", monospace;
+      font-size: 1rem;
+      resize: none;
+      border: none;
+      outline: none;
+    }
+    iframe {
+      width: 100%;
+      height: 150px;
+      background: #fff;
+      border: none;
+      border-radius: 8px;
+    }
     footer {
       text-align: center;
       padding: 1rem;
       background: rgba(255, 255, 255, 0.1);
       font-size: 0.9rem;
-      margin-top: auto;
     }
   </style>
 </head>
@@ -130,62 +118,92 @@
     </nav>
   </header>
 
-  <section class="container">
-    <h2>What is HTML?</h2>
+  <main>
+    <h1>Introduction to HTML</h1>
+    <p><b>HTML</b> stands for <b>HyperText Markup Language</b>. It is the standard language used to create and design the structure of web pages. Every website you visit is built upon HTML as its foundation.</p>
+
+    <h2>📜 Origin of HTML</h2>
     <p>
-      <b>HTML</b> (HyperText Markup Language) is the backbone of every website. It defines the structure and meaning of content on the web. 
-      HTML uses <b>tags</b> to organize and display text, images, links, tables, and more.
+      HTML was invented in <b>1989</b> by <b>Sir Tim Berners-Lee</b>, a British scientist working at CERN (the European Organization for Nuclear Research).
+      He designed HTML to share documents easily across computers connected by the Internet.
+      The first version, <b>HTML 1.0</b>, appeared in 1991.
+      The most widely used version today is <b>HTML5</b>, maintained by the <b>WHATWG</b> (Web Hypertext Application Technology Working Group).
     </p>
 
-    <h3>Basic Structure of an HTML Page</h3>
-    <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My First Web Page&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello, World!&lt;/h1&gt;
-    &lt;p&gt;Welcome to HTML learning with CodeQuest!&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-    </pre>
+    <h2>🕓 HTML Timeline</h2>
+    <ul>
+      <li><b>1991</b> — HTML 1.0 released</li>
+      <li><b>1995</b> — HTML 2.0 adds forms and tables</li>
+      <li><b>1997</b> — HTML 3.2 and 4.0 standardize design elements</li>
+      <li><b>2014</b> — HTML5 launched with multimedia, semantic tags, and modern APIs</li>
+      <li><b>Present</b> — HTML is a “living standard” continually updated by WHATWG</li>
+    </ul>
 
+    <h2>🏗️ Basic HTML Structure</h2>
+    <div class="code-box">
+      &lt;!DOCTYPE html&gt;<br>
+      &lt;html&gt;<br>
+      &nbsp;&nbsp;&lt;head&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;My First Web Page&lt;/title&gt;<br>
+      &nbsp;&nbsp;&lt;/head&gt;<br>
+      &nbsp;&nbsp;&lt;body&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hello, World!&lt;/h1&gt;<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Welcome to HTML learning with CodeQuest!&lt;/p&gt;<br>
+      &nbsp;&nbsp;&lt;/body&gt;<br>
+      &lt;/html&gt;
+    </div>
+
+    <h3>Rendered Output:</h3>
     <div class="example">
       <h1>Hello, World!</h1>
       <p>Welcome to HTML learning with CodeQuest!</p>
     </div>
 
-    <h3>Common HTML Tags</h3>
+    <h2>🧠 Try It Yourself!</h2>
+    <p>Below, you can write your own HTML code and click <b>Run Code</b> to see the output instantly!</p>
+
+    <textarea id="htmlInput">
+<h1>Hello World!</h1>
+<p>Welcome to my first web page.</p>
+    </textarea>
+    <br>
+    <button onclick="runCode()">Run Code ▶</button>
+    <h3>Output:</h3>
+    <iframe id="outputFrame"></iframe>
+
+    <h2>🔖 Common HTML Tags</h2>
     <ul>
-      <li><code>&lt;h1&gt;–&lt;h6&gt;</code> — Headings (from largest to smallest)</li>
-      <li><code>&lt;p&gt;</code> — Paragraph text</li>
-      <li><code>&lt;a&gt;</code> — Hyperlinks</li>
-      <li><code>&lt;img&gt;</code> — Images</li>
-      <li><code>&lt;div&gt;</code> — Generic container for grouping elements</li>
-      <li><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code> — Lists</li>
+      <li><b>&lt;h1&gt;–&lt;h6&gt;</b>: Headings of different sizes</li>
+      <li><b>&lt;p&gt;</b>: Paragraphs of text</li>
+      <li><b>&lt;a&gt;</b>: Hyperlinks</li>
+      <li><b>&lt;img&gt;</b>: Images</li>
+      <li><b>&lt;div&gt;</b>: Containers or divisions</li>
+      <li><b>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</b>: Lists</li>
     </ul>
 
-    <h3>HTML Attributes</h3>
+    <h2>💡 Why Learn HTML?</h2>
     <p>
-      Tags can have attributes that provide extra information. Attributes appear inside the opening tag and usually come in name/value pairs.
-    </p>
-    <pre>
-&lt;img src="logo.png" alt="CodeQuest Logo"&gt;
-    </pre>
-
-    <h3>Why Learn HTML?</h3>
-    <p>
-      HTML is the **foundation** of every website.  
-      It defines *what* content appears on a page, while CSS controls how it looks, and JavaScript controls how it behaves.
-      Understanding HTML is the first step to becoming a web developer.
+      Learning HTML is the first step to becoming a web developer.
+      It helps you understand how content is displayed on websites and how to build the structure for anything from blogs to online apps.
     </p>
 
-    <a href="index.html" class="back-home">← Back to Home</a>
-  </section>
+    <div class="btn-group">
+      <button onclick="window.location.href='css.html'">Continue to CSS →</button>
+      <button onclick="window.location.href='index.html'">← Back to Home</button>
+    </div>
+  </main>
 
   <footer>
     © 2025 CodeQuest | Learn Coding the Fun Way
   </footer>
+
+  <script>
+    // Function for "Try It Yourself" interactive box
+    function runCode() {
+      const htmlCode = document.getElementById("htmlInput").value;
+      const outputFrame = document.getElementById("outputFrame");
+      outputFrame.srcdoc = htmlCode; // displays typed HTML code in iframe
+    }
+  </script>
 </body>
 </html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Quest - God Mode</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 650px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #00e676;
+    transform: translateY(-3px);
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>CSS Quest – God Mode 👑</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "Which of the following is a valid CSS variable declaration?",
+    answers: [
+      { text: "--main-color: #ff0000;", correct: true },
+      { text: "var(main-color) = #ff0000;", correct: false },
+      { text: "$main-color: #ff0000;", correct: false },
+      { text: "@main-color: #ff0000;", correct: false }
+    ]
+  },
+  {
+    question: "How do you reference a CSS variable?",
+    answers: [
+      { text: "color: get(--main-color);", correct: false },
+      { text: "color: $main-color;", correct: false },
+      { text: "color: var(--main-color);", correct: true },
+      { text: "color: main-color;", correct: false }
+    ]
+  },
+  {
+    question: "Which of these defines a two-column grid layout?",
+    answers: [
+      { text: "display: flex; grid-template: 2;", correct: false },
+      { text: "display: grid; grid-template-columns: 1fr 1fr;", correct: true },
+      { text: "display: inline-grid(2);", correct: false },
+      { text: "display: block; columns: 2;", correct: false }
+    ]
+  },
+  {
+    question: "What does @media do in CSS?",
+    answers: [
+      { text: "Imports another stylesheet", correct: false },
+      { text: "Applies styles based on device conditions", correct: true },
+      { text: "Creates animations", correct: false },
+      { text: "Defines font faces", correct: false }
+    ]
+  },
+  {
+    question: "Which selector targets the first line of a paragraph?",
+    answers: [
+      { text: "p:first-line", correct: true },
+      { text: "p::first-letter", correct: false },
+      { text: "p:first", correct: false },
+      { text: "p:line(1)", correct: false }
+    ]
+  },
+  {
+    question: "How can you animate an element’s background color?",
+    answers: [
+      { text: "@keyframes colorShift { from {background: red;} to {background: blue;} }", correct: true },
+      { text: "animation: bgchange {red to blue};", correct: false },
+      { text: "transition: background ease;", correct: false },
+      { text: "@transition bg-color;", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>🔥 GOD MODE COMPLETE 🔥</h1>
+      <p>You truly mastered CSS.</p>
+      <p>Your Score: ${score} / ${questions.length}</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

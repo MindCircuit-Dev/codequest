@@ -6,17 +6,48 @@
 <title>HTML Quest – Easy</title>
 <link rel="stylesheet" href="style.css">
 <style>
-  body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg,#ff8a00,#ffcc70); color:#fff; text-align:center; min-height:100vh; padding:30px; }
-  .quiz-box { background: rgba(255,255,255,0.1); padding: 25px; border-radius: 16px; max-width: 600px; margin: auto; position: relative; }
-  #timer { position: absolute; top:15px; right:20px; background: rgba(255,255,255,0.2); padding: 6px 12px; border-radius:8px; font-weight:bold; color:#ffeb3b; }
-  button { background:#fff; color:#333; border:none; padding:10px 16px; border-radius:8px; cursor:pointer; margin:6px; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#ff8a00,#ffcc70);
+    color:#fff;
+    text-align:center;
+    min-height:100vh;
+    padding:30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+  }
+  #timer {
+    position: absolute;
+    top:15px;
+    right:20px;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius:8px;
+    font-weight:bold;
+    color:#ffeb3b;
+  }
+  button {
+    background:#fff;
+    color:#333;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:6px;
+  }
   button:hover { background:#ffeb3b; }
 </style>
 </head>
 <body>
 
 <div class="quiz-box">
-  <div id="timer">⏱ 45s</div>
+  <div id="timer">⏱ 60s</div>
   <h1>HTML Quest – Easy</h1>
   <p id="question">Loading...</p>
   <div id="answers"></div>
@@ -49,9 +80,9 @@ const questions = [
   {
     question: "Which HTML element is used for the largest heading?",
     answers: [
-      { text: "<h1>", correct: true },
       { text: "<h6>", correct: false },
       { text: "<heading>", correct: false },
+      { text: "<h1>", correct: true },
       { text: "<head>", correct: false }
     ]
   }
@@ -59,7 +90,7 @@ const questions = [
 
 document.addEventListener("DOMContentLoaded", () => {
   showQuestion(questions);
-  startTimer(45); // Easy = 45s
+  startTimer(60); // Easy = 60 seconds
 });
 </script>
 

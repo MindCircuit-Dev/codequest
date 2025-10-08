@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Quest - God Mode</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000, #434343);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 650px;
+    margin: 0 auto;
+    box-shadow: 0 0 25px rgba(255,255,255,0.3);
+  }
+  button {
+    background: #fff;
+    color: #111;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #ffd700;
+    transform: translateY(-3px);
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>JavaScript Quest – God Mode 👑</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What will be logged to the console?\n\nconsole.log(0.1 + 0.2 === 0.3);",
+    answers: [
+      { text: "true", correct: false },
+      { text: "false", correct: true },
+      { text: "undefined", correct: false },
+      { text: "NaN", correct: false }
+    ]
+  },
+  {
+    question: "What is a closure in JavaScript?",
+    answers: [
+      { text: "A function having access to its outer function’s variables", correct: true },
+      { text: "A method that runs only once", correct: false },
+      { text: "A function that closes itself automatically", correct: false },
+      { text: "A variable declared with const", correct: false }
+    ]
+  },
+  {
+    question: "What will this output?\n\nconsole.log('1');\nsetTimeout(()=>console.log('2'),0);\nPromise.resolve().then(()=>console.log('3'));\nconsole.log('4');",
+    answers: [
+      { text: "1, 2, 3, 4", correct: false },
+      { text: "1, 4, 3, 2", correct: true },
+      { text: "1, 3, 2, 4", correct: false },
+      { text: "3, 1, 2, 4", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following correctly handles async/await?",
+    answers: [
+      { text: "await must be used inside an async function", correct: true },
+      { text: "await can be used anywhere", correct: false },
+      { text: "async must be used inside await", correct: false },
+      { text: "await replaces promises entirely", correct: false }
+    ]
+  },
+  {
+    question: "What is the difference between '==' and '===' in JavaScript?",
+    answers: [
+      { text: "'==' compares values only, '===' compares both value and type", correct: true },
+      { text: "They are the same", correct: false },
+      { text: "'===' allows implicit conversions", correct: false },
+      { text: "'==' is faster", correct: false }
+    ]
+  },
+  {
+    question: "What will be the output?\n\nlet x = [1, 2, 3];\nlet y = x;\ny.push(4);\nconsole.log(x === y);",
+    answers: [
+      { text: "true", correct: true },
+      { text: "false", correct: false },
+      { text: "undefined", correct: false },
+      { text: "error", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>🏆 You have achieved GOD MODE!</h1>
+      <p>Your JavaScript knowledge is divine!</p>
+      <p>Your Final Score: ${score} / ${questions.length}</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

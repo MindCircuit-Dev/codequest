@@ -15,12 +15,12 @@ function startTimer(duration) {
     timerDisplay.innerText = `⏱ ${timeLeft}s`;
 
     if (timeLeft <= 10) {
-      timerDisplay.style.color = "#ff3b3b";
-      timerDisplay.style.transform = "scale(1.2)";
-      tickAudio.play().catch(()=>{}); // play tick
-    } else {
-      timerDisplay.style.color = "#ffeb3b";
-      timerDisplay.style.transform = "scale(1)";
+  timerDisplay.style.color = "#ff3b3b";
+  timerDisplay.style.transform = "scale(1.2)";
+} else {
+  timerDisplay.style.color = "#ffeb3b";
+  timerDisplay.style.transform = "scale(1)";
+
     }
 
     if (timeLeft <= 0) {

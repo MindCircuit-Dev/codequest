@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Quest – GOD MODE ⚡</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #141E30, #243B55);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 16px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+  }
+  h1 {
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700;
+  }
+  button {
+    background: #fff;
+    color: #243B55;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+    transition: 0.3s;
+    font-weight: 600;
+  }
+  button:hover {
+    background: #FFD700;
+    color: #000;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>⚡ C Programming Quest – GOD MODE</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What is a dangling pointer in C?",
+    answers: [
+      { text: "A pointer that points to a deallocated memory location", correct: true },
+      { text: "A pointer not initialized yet", correct: false },
+      { text: "A pointer to a NULL value", correct: false },
+      { text: "A pointer pointing to itself", correct: false }
+    ]
+  },
+  {
+    question: "Which header file defines malloc() and free() functions?",
+    answers: [
+      { text: "<string.h>", correct: false },
+      { text: "<memory.h>", correct: false },
+      { text: "<stdlib.h>", correct: true },
+      { text: "<stdio.h>", correct: false }
+    ]
+  },
+  {
+    question: "What will happen if you call free() twice on the same pointer?",
+    answers: [
+      { text: "It will safely ignore the second call", correct: false },
+      { text: "It causes undefined behavior", correct: true },
+      { text: "It resets the pointer automatically", correct: false },
+      { text: "It deletes the pointer", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following correctly declares a pointer to a function?",
+    answers: [
+      { text: "int *f();", correct: false },
+      { text: "int (*f)();", correct: true },
+      { text: "int f*();", correct: false },
+      { text: "int f();", correct: false }
+    ]
+  },
+  {
+    question: "What is the output of this code?\n\nint a = 5;\nint *p = &a;\n*p = *p + 5;\nprintf('%d', a);",
+    answers: [
+      { text: "5", correct: false },
+      { text: "10", correct: true },
+      { text: "0", correct: false },
+      { text: "Compilation error", correct: false }
+    ]
+  },
+  {
+    question: "What is the correct syntax to open a file for writing in binary mode?",
+    answers: [
+      { text: "fopen('file.txt', 'wb');", correct: true },
+      { text: "open('file.txt', 'binary');", correct: false },
+      { text: "fopen('file.txt', 'bw');", correct: false },
+      { text: "file('wb', 'file.txt');", correct: false }
+    ]
+  },
+  {
+    question: "Which keyword is used to define a structure in C?",
+    answers: [
+      { text: "class", correct: false },
+      { text: "struct", correct: true },
+      { text: "define", correct: false },
+      { text: "typedef", correct: false }
+    ]
+  },
+  {
+    question: "What will the function return if no return statement is specified in C (non-void)?",
+    answers: [
+      { text: "0", correct: false },
+      { text: "Undefined behavior", correct: true },
+      { text: "NULL", correct: false },
+      { text: "1", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following is used to dynamically allocate memory for an array?",
+    answers: [
+      { text: "malloc()", correct: true },
+      { text: "free()", correct: false },
+      { text: "printf()", correct: false },
+      { text: "sizeof()", correct: false }
+    ]
+  },
+  {
+    question: "What will be the output?\n\nint x = 2;\nprintf('%d', x++ * ++x);",
+    answers: [
+      { text: "6", correct: false },
+      { text: "Compiler dependent / Undefined behavior", correct: true },
+      { text: "8", correct: false },
+      { text: "4", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>👑 GOD MODE COMPLETE!</h1>
+      <p>You conquered C language with a score of ${score}/${questions.length}!</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

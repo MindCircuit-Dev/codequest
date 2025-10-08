@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Quest - Hard</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #7f00ff, #e100ff);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+  }
+  button:hover {
+    background: #ffeb3b;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>CSS Quest – Hard</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What does the z-index property control?",
+    answers: [
+      { text: "The transparency of an element", correct: false },
+      { text: "The stacking order of overlapping elements", correct: true },
+      { text: "The size of an element", correct: false },
+      { text: "The border thickness", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following correctly centers a div using Flexbox?",
+    answers: [
+      { text: "display: flex; justify-content: center; align-items: center;", correct: true },
+      { text: "display: grid; center: both;", correct: false },
+      { text: "float: center;", correct: false },
+      { text: "position: center;", correct: false }
+    ]
+  },
+  {
+    question: "Which position value allows an element to stay fixed while scrolling?",
+    answers: [
+      { text: "relative", correct: false },
+      { text: "absolute", correct: false },
+      { text: "fixed", correct: true },
+      { text: "sticky", correct: false }
+    ]
+  },
+  {
+    question: "What does :hover represent in CSS?",
+    answers: [
+      { text: "A JavaScript function", correct: false },
+      { text: "A pseudo-class for when an element is clicked", correct: false },
+      { text: "A pseudo-class for when an element is hovered by the mouse", correct: true },
+      { text: "A pseudo-element for animations", correct: false }
+    ]
+  },
+  {
+    question: "Which is the correct syntax for a linear gradient background?",
+    answers: [
+      { text: "background: gradient(linear, red, blue);", correct: false },
+      { text: "background: linear-gradient(red, blue);", correct: true },
+      { text: "background: color-gradient(red to blue);", correct: false },
+      { text: "background: fade(red, blue);", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>🏆 CSS Hard Level Complete!</h1>
+      <p>You scored ${score} out of ${questions.length}.</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

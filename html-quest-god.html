@@ -3,143 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Quest - God Mode</title>
+<title>HTML Quest – God Mode</title>
 <link rel="stylesheet" href="style.css">
 <style>
   body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #000428, #004e92);
-    color: #fff;
-    text-align: center;
-    min-height: 100vh;
-    padding: 30px;
+    background: linear-gradient(135deg,#8b0000,#ff4500);
+    color:#fff;
+    text-align:center;
+    min-height:100vh;
+    padding:30px;
   }
   .quiz-box {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.1);
     padding: 25px;
-    border-radius: 18px;
-    max-width: 650px;
-    margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    border-radius: 16px;
+    max-width: 600px;
+    margin: auto;
+    position: relative;
+  }
+  #timer {
+    position: absolute;
+    top:15px;
+    right:20px;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius:8px;
+    font-weight:bold;
+    color:#ffeb3b;
   }
   button {
-    background: #fff;
-    color: #333;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 6px;
+    background:#fff;
+    color:#333;
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    margin:6px;
   }
-  button:hover {
-    background: #ffcc00;
-  }
+  button:hover { background:#ffeb3b; }
 </style>
 </head>
 <body>
 
 <div class="quiz-box">
-  <h1>HTML Quest – GOD MODE 👑</h1>
-  <p id="question">Loading challenge...</p>
+  <div id="timer">⏱ 40s</div>
+  <h1>HTML Quest – God Mode</h1>
+  <p id="question">Loading...</p>
   <div id="answers"></div>
-  <button onclick="nextQuestion()">Next ➡</button>
+  <button onclick="nextQuestion(questions)">Next ➡</button>
   <p id="score" style="margin-top:10px;"></p>
   <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
 </div>
 
+<script src="quest-timer.js"></script>
 <script>
 const questions = [
   {
-    question: "Which HTML5 API allows offline storage of key-value data pairs in a web browser?",
+    question: "Which HTML5 element is used to specify navigation links?",
     answers: [
-      { text: "WebSQL", correct: false },
-      { text: "IndexedDB", correct: true },
-      { text: "Cookies", correct: false },
-      { text: "LocalStorage", correct: false }
+      { text: "<nav>", correct: true },
+      { text: "<navigation>", correct: false },
+      { text: "<menu>", correct: false },
+      { text: "<section>", correct: false }
     ]
   },
   {
-    question: "Which HTML attribute improves accessibility by describing the purpose of an image?",
+    question: "Which element defines a section in a document?",
     answers: [
-      { text: "alt", correct: true },
-      { text: "desc", correct: false },
-      { text: "title", correct: false },
-      { text: "data-info", correct: false }
+      { text: "<section>", correct: true },
+      { text: "<div>", correct: false },
+      { text: "<article>", correct: false },
+      { text: "<span>", correct: false }
     ]
   },
   {
-    question: "What is the purpose of the <main> tag in HTML5?",
+    question: "Which attribute is used to specify a unique id for an HTML element?",
     answers: [
-      { text: "Defines content unique to the page", correct: true },
-      { text: "Defines the primary navigation area", correct: false },
-      { text: "Defines a section of unrelated links", correct: false },
-      { text: "Wraps the site footer content", correct: false }
+      { text: "id", correct: true },
+      { text: "class", correct: false },
+      { text: "name", correct: false },
+      { text: "key", correct: false }
     ]
   },
   {
-    question: "Which API allows a web page to continue functioning even when offline?",
+    question: "What is the correct HTML element for playing audio?",
     answers: [
-      { text: "WebSocket API", correct: false },
-      { text: "Fetch API", correct: false },
-      { text: "Service Worker API", correct: true },
-      { text: "WebRTC API", correct: false }
+      { text: "<audio>", correct: true },
+      { text: "<sound>", correct: false },
+      { text: "<music>", correct: false },
+      { text: "<mp3>", correct: false }
     ]
   },
   {
-    question: "Which element provides a caption for a <figure> in HTML5?",
+    question: "Which HTML tag is used to define a client-side script?",
     answers: [
-      { text: "<caption>", correct: false },
-      { text: "<figcaption>", correct: true },
-      { text: "<legend>", correct: false },
-      { text: "<describe>", correct: false }
+      { text: "<script>", correct: true },
+      { text: "<js>", correct: false },
+      { text: "<code>", correct: false },
+      { text: "<program>", correct: false }
     ]
   },
   {
-    question: "What is the correct ARIA role for a button element used to expand content?",
+    question: "Which HTML element is used to define the document’s title?",
     answers: [
-      { text: "role='toggle'", correct: false },
-      { text: "role='button'", correct: true },
-      { text: "role='expand'", correct: false },
-      { text: "role='switch'", correct: false }
+      { text: "<title>", correct: true },
+      { text: "<head>", correct: false },
+      { text: "<meta>", correct: false },
+      { text: "<header>", correct: false }
     ]
   }
 ];
 
-let currentQuestion = 0;
-let score = 0;
-
-function showQuestion() {
-  const q = questions[currentQuestion];
-  document.getElementById("question").innerText = q.question;
-  const answerDiv = document.getElementById("answers");
-  answerDiv.innerHTML = "";
-  q.answers.forEach(a => {
-    const btn = document.createElement("button");
-    btn.innerText = a.text;
-    btn.onclick = () => selectAnswer(a.correct);
-    answerDiv.appendChild(btn);
-  });
-}
-
-function selectAnswer(correct) {
-  if (correct) score++;
-  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
-}
-
-function nextQuestion() {
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    showQuestion();
-  } else {
-    document.querySelector(".quiz-box").innerHTML = `
-      <h1>💥 YOU’VE ASCENDED TO HTML GOD STATUS 💥</h1>
-      <p>You conquered every HTML challenge with a score of ${score} out of ${questions.length}.</p>
-      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
-    `;
-  }
-}
-
-showQuestion();
+document.addEventListener("DOMContentLoaded", () => {
+  showQuestion(questions);
+  startTimer(40); // God Mode = 40 seconds
+});
 </script>
+
 </body>
 </html>

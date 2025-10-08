@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Quest - Easy</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+  }
+  button:hover {
+    background: #ffeb3b;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>CSS Quest – Easy</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What does CSS stand for?",
+    answers: [
+      { text: "Colorful Style Sheets", correct: false },
+      { text: "Creative Style System", correct: false },
+      { text: "Cascading Style Sheets", correct: true },
+      { text: "Computer Styling Syntax", correct: false }
+    ]
+  },
+  {
+    question: "Which property is used to change the background color?",
+    answers: [
+      { text: "bgcolor", correct: false },
+      { text: "color", correct: false },
+      { text: "background-color", correct: true },
+      { text: "background-style", correct: false }
+    ]
+  },
+  {
+    question: "How do you make text bold in CSS?",
+    answers: [
+      { text: "font-style: bold;", correct: false },
+      { text: "text-weight: bold;", correct: false },
+      { text: "font-weight: bold;", correct: true },
+      { text: "text-style: bold;", correct: false }
+    ]
+  },
+  {
+    question: "Which CSS property controls the text size?",
+    answers: [
+      { text: "font-size", correct: true },
+      { text: "text-size", correct: false },
+      { text: "font-style", correct: false },
+      { text: "text-font", correct: false }
+    ]
+  },
+  {
+    question: "How do you center text horizontally?",
+    answers: [
+      { text: "align: center;", correct: false },
+      { text: "text-align: center;", correct: true },
+      { text: "font-align: middle;", correct: false },
+      { text: "center-text: true;", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>🎉 CSS Easy Level Complete!</h1>
+      <p>You scored ${score} out of ${questions.length}.</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

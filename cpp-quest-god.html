@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C++ Quest – God Mode</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #232526, #414345);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+  }
+  button:hover {
+    background: #ff4b1f;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>C++ Quest – God Mode 💀</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What is a virtual function in C++?",
+    answers: [
+      { text: "A function defined inside a template", correct: false },
+      { text: "A function that can be overridden in derived classes", correct: true },
+      { text: "A function that can only be called at compile time", correct: false },
+      { text: "A static function", correct: false }
+    ]
+  },
+  {
+    question: "What is the purpose of a pure virtual function?",
+    answers: [
+      { text: "To make a function private", correct: false },
+      { text: "To make the class abstract", correct: true },
+      { text: "To speed up compilation", correct: false },
+      { text: "To overload operators", correct: false }
+    ]
+  },
+  {
+    question: "What does RAII stand for in C++?",
+    answers: [
+      { text: "Resource Acquisition Is Initialization", correct: true },
+      { text: "Random Access Interface Initialization", correct: false },
+      { text: "Run-time Allocation Internal Instance", correct: false },
+      { text: "Rapid Access Inheritance Implementation", correct: false }
+    ]
+  },
+  {
+    question: "What does the 'mutable' keyword do in C++?",
+    answers: [
+      { text: "Allows a class to inherit multiple base classes", correct: false },
+      { text: "Allows a member variable to be modified even in const objects", correct: true },
+      { text: "Makes a variable thread-safe", correct: false },
+      { text: "Prevents changes to the variable", correct: false }
+    ]
+  },
+  {
+    question: "What is the difference between std::shared_ptr and std::unique_ptr?",
+    answers: [
+      { text: "shared_ptr shares ownership; unique_ptr has sole ownership", correct: true },
+      { text: "unique_ptr shares ownership; shared_ptr has sole ownership", correct: false },
+      { text: "They are identical types", correct: false },
+      { text: "unique_ptr is for arrays only", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>👑 C++ GOD MODE COMPLETE!</h1>
+      <p>You scored ${score} out of ${questions.length}.</p>
+      <p>${score === questions.length ? "🔥 Perfect! You are a C++ master!" : "⚔️ Great effort, warrior!"}</p>
+      <button onclick="window.location.href='choose-quest.html'">Return to Quest Selection</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

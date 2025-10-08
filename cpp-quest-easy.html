@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C++ Quest – Easy</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #5C258D, #4389A2);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #ffd700;
+    color: #000;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>💻 C++ Quest – Easy</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What does C++ primarily add to the C language?",
+    answers: [
+      { text: "Object-Oriented Programming", correct: true },
+      { text: "More keywords only", correct: false },
+      { text: "Graphics support", correct: false },
+      { text: "Database integration", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following is a valid C++ comment?",
+    answers: [
+      { text: "// This is a comment", correct: true },
+      { text: "# This is a comment", correct: false },
+      { text: "-- This is a comment", correct: false },
+      { text: "/* This is a comment */", correct: true }
+    ]
+  },
+  {
+    question: "Which of these is used to output data to the console in C++?",
+    answers: [
+      { text: "cout", correct: true },
+      { text: "printf", correct: false },
+      { text: "Console.WriteLine", correct: false },
+      { text: "System.out.println", correct: false }
+    ]
+  },
+  {
+    question: "Which header file must be included to use cout and cin?",
+    answers: [
+      { text: "<iostream>", correct: true },
+      { text: "<stdio.h>", correct: false },
+      { text: "<string>", correct: false },
+      { text: "<input.h>", correct: false }
+    ]
+  },
+  {
+    question: "Which operator is used for input in C++?",
+    answers: [
+      { text: ">>", correct: true },
+      { text: "<<", correct: false },
+      { text: ">", correct: false },
+      { text: "<", correct: false }
+    ]
+  },
+  {
+    question: "What is the correct way to declare an integer variable in C++?",
+    answers: [
+      { text: "int num;", correct: true },
+      { text: "num int;", correct: false },
+      { text: "integer num;", correct: false },
+      { text: "int = num;", correct: false }
+    ]
+  },
+  {
+    question: "How do you end a C++ statement?",
+    answers: [
+      { text: "With a semicolon (;)", correct: true },
+      { text: "With a period (.)", correct: false },
+      { text: "With a comma (,)", correct: false },
+      { text: "With a colon (:)", correct: false }
+    ]
+  },
+  {
+    question: "Which of these is the correct syntax for the main function in C++?",
+    answers: [
+      { text: "int main()", correct: true },
+      { text: "void main()", correct: false },
+      { text: "function main()", correct: false },
+      { text: "main()", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following data types is NOT valid in C++?",
+    answers: [
+      { text: "float", correct: false },
+      { text: "boolean", correct: true },
+      { text: "int", correct: false },
+      { text: "double", correct: false }
+    ]
+  },
+  {
+    question: "What symbol is used to end a namespace declaration?",
+    answers: [
+      { text: "}", correct: true },
+      { text: ";", correct: false },
+      { text: ")", correct: false },
+      { text: "]", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>🎉 Quiz Complete!</h1>
+      <p>You scored ${score} out of ${questions.length} on Easy Mode.</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

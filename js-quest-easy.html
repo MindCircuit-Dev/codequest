@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Quest - Easy</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+    transition: 0.3s;
+  }
+  button:hover {
+    background: #00e676;
+    transform: translateY(-3px);
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>JavaScript Quest – Easy 🪄</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "What keyword is used to declare a variable in JavaScript?",
+    answers: [
+      { text: "var", correct: true },
+      { text: "variable", correct: false },
+      { text: "v", correct: false },
+      { text: "dim", correct: false }
+    ]
+  },
+  {
+    question: "Which of the following shows an alert message?",
+    answers: [
+      { text: "show('Hello')", correct: false },
+      { text: "msg('Hello')", correct: false },
+      { text: "alert('Hello')", correct: true },
+      { text: "display('Hello')", correct: false }
+    ]
+  },
+  {
+    question: "What symbol is used for single-line comments?",
+    answers: [
+      { text: "//", correct: true },
+      { text: "/* */", correct: false },
+      { text: "<!-- -->", correct: false },
+      { text: "#", correct: false }
+    ]
+  },
+  {
+    question: "Which data type holds true or false values?",
+    answers: [
+      { text: "Boolean", correct: true },
+      { text: "String", correct: false },
+      { text: "Number", correct: false },
+      { text: "Object", correct: false }
+    ]
+  },
+  {
+    question: "How do you write 'Hello World' in the console?",
+    answers: [
+      { text: "print('Hello World')", correct: false },
+      { text: "log('Hello World')", correct: false },
+      { text: "console.log('Hello World')", correct: true },
+      { text: "echo('Hello World')", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>🎉 QUEST COMPLETE 🎉</h1>
+      <p>You finished the JavaScript Easy Mode!</p>
+      <p>Your Score: ${score} / ${questions.length}</p>
+      <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

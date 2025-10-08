@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C# Quest – God Mode</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #000000, #434343);
+    color: #fff;
+    text-align: center;
+    min-height: 100vh;
+    padding: 30px;
+  }
+  .quiz-box {
+    background: rgba(255,255,255,0.1);
+    padding: 25px;
+    border-radius: 18px;
+    max-width: 650px;
+    margin: 0 auto;
+  }
+  button {
+    background: #fff;
+    color: #333;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 6px;
+  }
+  button:hover {
+    background: #ff4b1f;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-box">
+  <h1>C# Quest – God Mode 😈</h1>
+  <p id="question">Question text here...</p>
+  <div id="answers"></div>
+  <button onclick="nextQuestion()">Next ➡</button>
+  <p id="score" style="margin-top:10px;"></p>
+  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "Which keyword is used to define an asynchronous method in C#?",
+    answers: [
+      { text: "await", correct: false },
+      { text: "async", correct: true },
+      { text: "defer", correct: false },
+      { text: "thread", correct: false }
+    ]
+  },
+  {
+    question: "What is a delegate in C#?",
+    answers: [
+      { text: "A variable that stores method references", correct: true },
+      { text: "A function that delays execution", correct: false },
+      { text: "A loop handler", correct: false },
+      { text: "An event manager class", correct: false }
+    ]
+  },
+  {
+    question: "Which LINQ query returns elements greater than 5 from a list?",
+    answers: [
+      { text: "var result = list.Select(x => x > 5);", correct: false },
+      { text: "var result = from x in list where x > 5 select x;", correct: true },
+      { text: "var result = list.Filter(x => x > 5);", correct: false },
+      { text: "var result = list.Map(x => x > 5);", correct: false }
+    ]
+  },
+  {
+    question: "What happens if an exception is thrown but not caught in C#?",
+    answers: [
+      { text: "The program continues normally", correct: false },
+      { text: "The program terminates and displays an error", correct: true },
+      { text: "The compiler automatically retries the code", correct: false },
+      { text: "It is ignored by default", correct: false }
+    ]
+  },
+  {
+    question: "What is the purpose of the 'interface' keyword in C#?",
+    answers: [
+      { text: "To create a class with static methods", correct: false },
+      { text: "To define a contract that implementing classes must follow", correct: true },
+      { text: "To implement multiple inheritance", correct: false },
+      { text: "To prevent class inheritance", correct: false }
+    ]
+  }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById("question").innerText = q.question;
+  const answerDiv = document.getElementById("answers");
+  answerDiv.innerHTML = "";
+  q.answers.forEach(a => {
+    const btn = document.createElement("button");
+    btn.innerText = a.text;
+    btn.onclick = () => selectAnswer(a.correct);
+    answerDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(correct) {
+  if (correct) score++;
+  document.getElementById("score").innerText = `Score: ${score}/${questions.length}`;
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    document.querySelector(".quiz-box").innerHTML = `
+      <h1>💀 GOD MODE COMPLETE!</h1>
+      <p>You conquered C# God Mode with a score of ${score} / ${questions.length}!</p>
+      <p>${score === questions.length ? "🏆 Perfect! You're a C# legend!" : "🔥 Great job, mortal programmer!"}</p>
+      <button onclick="window.location.href='choose-quest.html'">Return to Quest Selection</button>
+    `;
+  }
+}
+
+showQuestion();
+</script>
+</body>
+</html>

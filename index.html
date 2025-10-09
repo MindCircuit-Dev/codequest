@@ -1,14 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeQuest | Learn Coding the Fun Way</title>
-  <!-- Link external CSS -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #4f46e5;
+      color: white;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Left Sidebar (Languages) */
+    .sidebar {
+      width: 220px;
+      background: #3b34c5;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
+
+    .sidebar h2 {
+      color: #ffcb00;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .sidebar nav a {
+      display: block;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 5px 0;
+      transition: background 0.3s;
+    }
+
+    .sidebar nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Right Sidebar (Tutorial) */
+    .tutorial-sidebar {
+      width: 260px;
+      background: #3b34c5;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100vh;
+      position: fixed;
+      right: 0;
+      top: 0;
+      color: #fff;
+      overflow-y: auto;
+    }
+
+    .tutorial-sidebar h2 {
+      color: #ffcb00;
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .tutorial-sidebar p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .tutorial-sidebar h4 {
+      color: #ffd900;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    .tutorial-sidebar ul {
+      padding-left: 18px;
+      margin-top: 5px;
+      font-size: 0.9rem;
+    }
+
+    /* Main Content */
+    .main-content {
+      margin-left: 240px;
+      margin-right: 280px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+    }
+
+    .main-content h1 {
+      font-size: 2.4em;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .main-content p {
+      max-width: 600px;
+      color: #e0e0e0;
+      margin-bottom: 20px;
+    }
+
+    .button-group button {
+      background: #ffcb00;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 0 8px;
+      transition: 0.3s;
+    }
+
+    .button-group button:hover {
+      background: #ffd740;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 0.85em;
+    }
+  </style>
 </head>
 <body>
-  <!-- Sidebar -->
+  <!-- Left Sidebar -->
   <div class="sidebar">
     <h2>CodeQuest</h2>
     <nav>
@@ -24,7 +162,10 @@
   <!-- Main Content -->
   <div class="main-content">
     <h1>Welcome to CodeQuest!</h1>
-    <p>Embark on a fun learning adventure that teaches you the basics of web and programming languages — HTML, CSS, JavaScript, C, C++, and C# — step by step.</p>
+    <p>
+      Embark on a fun learning adventure that teaches you the basics of web and programming languages —
+      HTML, CSS, JavaScript, C, C++, and C# — step by step.
+    </p>
 
     <div class="button-group">
       <button onclick="startJourney()">Begin Your Study Journey 🚀</button>
@@ -32,12 +173,42 @@
     </div>
   </div>
 
+  <!-- Right Sidebar (Tutorial Section) -->
+  <div class="tutorial-sidebar">
+    <h2>Tutorial</h2>
+    <p><strong>Learn coding faster and smarter</strong> through proven, research-based techniques from computer science education and real-world developer experience.</p>
+
+    <h4>1. Start with the Fundamentals</h4>
+    <p>Master the basics: syntax, variables, loops, and logic. Strong fundamentals make every new language easier to learn.</p>
+
+    <h4>2. Practice Every Day</h4>
+    <p>Consistency beats intensity. Short, focused sessions (25–30 mins) daily improve memory and skill retention.</p>
+
+    <h4>3. Build Small Projects</h4>
+    <p>Apply your lessons! After learning HTML/CSS, design a webpage; after learning JS, build an interactive quiz.</p>
+
+    <h4>4. Learn by Debugging</h4>
+    <p>Debugging helps you understand how code really works. Don’t fear errors — analyze, fix, and learn.</p>
+
+    <h4>5. Join a Community</h4>
+    <p>Connect with other learners on GitHub or Reddit. Sharing knowledge accelerates growth.</p>
+
+    <h4>6. Use Real Resources</h4>
+    <ul>
+      <li>W3Schools — Learn syntax interactively.</li>
+      <li>MDN Web Docs — Deep dive into web technologies.</li>
+      <li>freeCodeCamp — Practice coding projects.</li>
+    </ul>
+
+    <h4>7. Stay Curious</h4>
+    <p>Experiment and ask “why?” every time. The best coders are lifelong learners.</p>
+  </div>
+
   <!-- Footer -->
   <footer>
     © 2025 CodeQuest | Learn Coding the Fun Way
   </footer>
 
-  <!-- JavaScript -->
   <script>
     function startJourney() {
       alert("Great! Let’s start your coding adventure!");
@@ -46,8 +217,7 @@
 
     function startChallenge() {
       alert("Ready to test your skills? Let's take on the challenge!");
-     window.location.href = "choose-quest.html";
-
+      window.location.href = "choose-quest.html";
     }
   </script>
 </body>

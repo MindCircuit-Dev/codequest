@@ -118,15 +118,15 @@
   <script>
     const questions = [
       { q: "What does HTML stand for?", a: ["Hyper Text Markup Language", "High Tech Machine Learning", "Home Tool Markup Language", "Hyperlinks and Text Management Language"], correct: 0 },
-      { q: "Which HTML element is used for the largest heading?", a: ["<heading>", "<h1>", "<h6>", "<head>"], correct: 1 },
-      { q: "What is the correct tag for a line break?", a: ["<break>", "<lb>", "<br>", "<b>"], correct: 2 },
-      { q: "Which tag is used to create a hyperlink?", a: ["<link>", "<a>", "<href>", "<url>"], correct: 1 },
-      { q: "Which element contains metadata like page title?", a: ["<meta>", "<info>", "<head>", "<header>"], correct: 2 },
-      { q: "What tag is used to insert an image?", a: ["<img>", "<src>", "<image>", "<pic>"], correct: 0 },
-      { q: "Which tag creates an unordered list?", a: ["<ul>", "<ol>", "<li>", "<list>"], correct: 0 },
-      { q: "What tag is used for table rows?", a: ["<td>", "<tr>", "<table>", "<th>"], correct: 1 },
-      { q: "Which attribute defines the link destination in an <a> tag?", a: ["src", "href", "alt", "target"], correct: 1 },
-      { q: "Which HTML tag is used to display a checkbox?", a: ["<option>", "<input type='checkbox'>", "<check>", "<select>"], correct: 1 }
+      { q: "Which HTML element is used for the largest heading?", a: ["&lt;heading&gt;", "&lt;h1&gt;", "&lt;h6&gt;", "&lt;head&gt;"], correct: 1 },
+      { q: "What is the correct tag for a line break?", a: ["&lt;break&gt;", "&lt;lb&gt;", "&lt;br&gt;", "&lt;b&gt;"], correct: 2 },
+      { q: "Which tag is used to create a hyperlink?", a: ["&lt;link&gt;", "&lt;a&gt;", "&lt;href&gt;", "&lt;url&gt;"], correct: 1 },
+      { q: "Which element contains metadata like page title?", a: ["&lt;meta&gt;", "&lt;info&gt;", "&lt;head&gt;", "&lt;header&gt;"], correct: 2 },
+      { q: "What tag is used to insert an image?", a: ["&lt;img&gt;", "&lt;src&gt;", "&lt;image&gt;", "&lt;pic&gt;"], correct: 0 },
+      { q: "Which tag creates an unordered list?", a: ["&lt;ul&gt;", "&lt;ol&gt;", "&lt;li&gt;", "&lt;list&gt;"], correct: 0 },
+      { q: "What tag is used for table rows?", a: ["&lt;td&gt;", "&lt;tr&gt;", "&lt;table&gt;", "&lt;th&gt;"], correct: 1 },
+      { q: "Which attribute defines the link destination in an &lt;a&gt; tag?", a: ["src", "href", "alt", "target"], correct: 1 },
+      { q: "Which HTML tag is used to display a checkbox?", a: ["&lt;option&gt;", "&lt;input type='checkbox'&gt;", "&lt;check&gt;", "&lt;select&gt;"], correct: 1 }
     ];
 
     let currentIndex = 0;
@@ -186,7 +186,7 @@
     document.addEventListener("DOMContentLoaded", () => {
       shuffledQuestions = shuffleArray([...questions]);
       showQuestion();
-      startTimer(60); // 60 seconds for easy mode
+      startTimer(60, showResult); // ← TIMER connected here (60 seconds)
     });
   </script>
 </body>

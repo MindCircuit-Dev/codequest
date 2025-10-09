@@ -1,112 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Hard Challenge | CodeQuest</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Quest - Hard</title>
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffebee, #e3f2fd);
-      color: #333;
-      margin: 0;
-      padding: 0;
+      background: linear-gradient(135deg, #e91e63, #ff9800);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: center;
     }
 
-    .quiz-container {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-      width: 90%;
-      max-width: 750px;
+    .quiz-box {
+      background: rgba(255,255,255,0.1);
       padding: 30px;
-      margin-top: 60px;
-      text-align: center;
-      transition: all 0.3s ease-in-out;
+      border-radius: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-in;
     }
 
     h1 {
-      color: #b71c1c;
-      margin-bottom: 15px;
-    }
-
-    #timer {
-      font-size: 22px;
-      font-weight: bold;
-      color: #d32f2f;
-      margin-bottom: 15px;
+      color: #ffeb3b;
+      margin-bottom: 10px;
     }
 
     .question {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 20px;
+      font-size: 1.2rem;
+      margin: 15px 0;
     }
 
     .answer-btn {
-      background: #1976d2;
-      color: white;
+      display: block;
+      background: rgba(255,255,255,0.2);
       border: none;
-      border-radius: 12px;
-      padding: 12px 20px;
-      margin: 8px;
-      cursor: pointer;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 10px auto;
       width: 80%;
-      font-size: 16px;
-      transition: all 0.2s ease;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
     }
 
     .answer-btn:hover:not([disabled]) {
-      background: #0d47a1;
-      transform: scale(1.05);
+      background: rgba(255,255,255,0.4);
+      transform: scale(1.03);
     }
 
     .answer-btn.correct {
-      background: #2e7d32;
+      background-color: #4caf50 !important;
     }
 
     .answer-btn.wrong {
-      background: #c62828;
+      background-color: #f44336 !important;
     }
 
     .next-btn {
-      background: #b71c1c;
-      color: white;
+      background: #ffeb3b;
+      color: #333;
       border: none;
-      padding: 12px 25px;
-      border-radius: 10px;
-      margin-top: 25px;
-      font-size: 16px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 20px;
       cursor: pointer;
-      display: none;
     }
 
     .next-btn:hover {
-      background: #7f0000;
+      background: #fff176;
     }
 
-    #result {
-      font-size: 20px;
+    #timer {
+      font-size: 1.2rem;
       font-weight: bold;
-      color: #333;
-      margin-top: 20px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .warning {
+      color: #ff1744;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    #score {
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <div class="quiz-container">
-    <h1>HTML Hard Challenge</h1>
-    <div id="timer">Time Left: 45s</div>
-    <div id="question-container">
-      <div id="question" class="question"></div>
-      <div id="answer-buttons" class="answer-buttons"></div>
-    </div>
-    <button id="next-btn" class="next-btn">Next</button>
-    <div id="result"></div>
+
+  <div class="quiz-box">
+    <h1>HTML Quest – Hard</h1>
+    <div id="timer">Time left: 120s</div>
+    <p id="question" class="question">Loading questions...</p>
+    <div id="answers"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>Next ➡</button>
+    <p id="score"></p>
+    <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back</button>
   </div>
 
   <script>
@@ -114,168 +118,170 @@
       {
         question: "What is the purpose of the <meta> tag in HTML?",
         answers: [
-          { text: "To provide metadata about the document such as description or keywords", correct: true },
-          { text: "To link external JavaScript files", correct: false },
-          { text: "To define the footer of the page", correct: false },
-          { text: "To add comments in HTML", correct: false }
+          { text: "It provides metadata such as description and keywords for SEO", correct: true },
+          { text: "It defines a paragraph of text", correct: false },
+          { text: "It inserts an image into the document", correct: false },
+          { text: "It displays the website logo", correct: false }
         ]
       },
       {
-        question: "Which HTML element defines navigation links?",
+        question: "Which attribute specifies that an input field must be filled out?",
+        answers: [
+          { text: "required", correct: true },
+          { text: "placeholder", correct: false },
+          { text: "validate", correct: false },
+          { text: "checked", correct: false }
+        ]
+      },
+      {
+        question: "What does the <canvas> element in HTML do?",
+        answers: [
+          { text: "It allows drawing graphics via JavaScript", correct: true },
+          { text: "It displays images only", correct: false },
+          { text: "It adds animation effects", correct: false },
+          { text: "It creates tables", correct: false }
+        ]
+      },
+      {
+        question: "What is the purpose of the <fieldset> tag?",
+        answers: [
+          { text: "To group related elements in a form", correct: true },
+          { text: "To create a section header", correct: false },
+          { text: "To make a clickable field", correct: false },
+          { text: "To define a footer area", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML element is used to embed a video?",
+        answers: [
+          { text: "<video>", correct: true },
+          { text: "<media>", correct: false },
+          { text: "<movie>", correct: false },
+          { text: "<embed>", correct: false }
+        ]
+      },
+      {
+        question: "What does the 'alt' attribute do in the <img> tag?",
+        answers: [
+          { text: "Provides alternative text if the image fails to load", correct: true },
+          { text: "Displays image size", correct: false },
+          { text: "Defines image source", correct: false },
+          { text: "Applies a filter to the image", correct: false }
+        ]
+      },
+      {
+        question: "What is the difference between <section> and <div>?",
+        answers: [
+          { text: "<section> is semantic, <div> is not", correct: true },
+          { text: "They are exactly the same", correct: false },
+          { text: "<div> has built-in styles", correct: false },
+          { text: "<section> is only for navigation", correct: false }
+        ]
+      },
+      {
+        question: "What is the correct HTML for creating a checkbox?",
+        answers: [
+          { text: "<input type='checkbox'>", correct: true },
+          { text: "<checkbox>", correct: false },
+          { text: "<input checkbox='true'>", correct: false },
+          { text: "<check>", correct: false }
+        ]
+      },
+      {
+        question: "Which element is used to define navigation links?",
         answers: [
           { text: "<nav>", correct: true },
           { text: "<navigate>", correct: false },
           { text: "<menu>", correct: false },
-          { text: "<section>", correct: false }
+          { text: "<header>", correct: false }
         ]
       },
       {
-        question: "Which attribute is used in HTML5 for responsive images?",
+        question: "What is the correct syntax for a comment in HTML?",
         answers: [
-          { text: "srcset", correct: true },
-          { text: "responsive", correct: false },
-          { text: "src", correct: false },
-          { text: "picture", correct: false }
-        ]
-      },
-      {
-        question: "Which HTML5 element is used to play video files?",
-        answers: [
-          { text: "<media>", correct: false },
-          { text: "<video>", correct: true },
-          { text: "<source>", correct: false },
-          { text: "<player>", correct: false }
-        ]
-      },
-      {
-        question: "What is the correct way to embed audio in HTML5?",
-        answers: [
-          { text: "<audio controls><source src='sound.mp3'></audio>", correct: true },
-          { text: "<sound src='sound.mp3'>", correct: false },
-          { text: "<music controls='sound.mp3'>", correct: false },
-          { text: "<media sound='sound.mp3'>", correct: false }
-        ]
-      },
-      {
-        question: "Which input type defines a slider control?",
-        answers: [
-          { text: "<input type='range'>", correct: true },
-          { text: "<input type='slider'>", correct: false },
-          { text: "<input type='scroll'>", correct: false },
-          { text: "<input type='bar'>", correct: false }
-        ]
-      },
-      {
-        question: "What does the <canvas> element do?",
-        answers: [
-          { text: "Draw graphics using JavaScript", correct: true },
-          { text: "Display videos", correct: false },
-          { text: "Add responsive layout", correct: false },
-          { text: "Create forms", correct: false }
-        ]
-      },
-      {
-        question: "Which HTML tag is used to define client-side scripts?",
-        answers: [
-          { text: "<script>", correct: true },
-          { text: "<code>", correct: false },
-          { text: "<javascript>", correct: false },
-          { text: "<js>", correct: false }
-        ]
-      },
-      {
-        question: "How do you specify text direction in HTML?",
-        answers: [
-          { text: "dir attribute", correct: true },
-          { text: "lang attribute", correct: false },
-          { text: "direction tag", correct: false },
-          { text: "align attribute", correct: false }
-        ]
-      },
-      {
-        question: "Which tag is used to specify a container for an external application or interactive content?",
-        answers: [
-          { text: "<object>", correct: true },
-          { text: "<embed>", correct: false },
-          { text: "<iframe>", correct: false },
-          { text: "<app>", correct: false }
+          { text: "<!-- This is a comment -->", correct: true },
+          { text: "// This is a comment", correct: false },
+          { text: "/* This is a comment */", correct: false },
+          { text: "# This is a comment", correct: false }
         ]
       }
     ];
 
-    let shuffledQuestions, currentQuestionIndex = 0, score = 0, timeLeft = 45, timerInterval;
-
-    const questionContainer = document.getElementById("question");
-    const answerButtons = document.getElementById("answer-buttons");
-    const nextButton = document.getElementById("next-btn");
-    const resultContainer = document.getElementById("result");
-    const timerDisplay = document.getElementById("timer");
-
-    function startQuiz() {
-      shuffledQuestions = questions.sort(() => Math.random() - 0.5);
-      currentQuestionIndex = 0;
-      score = 0;
-      timeLeft = 45;
-      nextButton.style.display = "none";
-      resultContainer.textContent = "";
-      startTimer();
-      showQuestion(shuffledQuestions[currentQuestionIndex]);
-    }
+    let currentQuestion = 0;
+    let score = 0;
+    let timeLeft = 120;
+    let timerInterval;
+    const shuffledQuestions = questions.sort(() => Math.random() - 0.5);
 
     function startTimer() {
-      timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+      const timerDisplay = document.getElementById("timer");
       timerInterval = setInterval(() => {
         timeLeft--;
-        timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+        timerDisplay.innerText = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 10) {
+          timerDisplay.classList.add("warning");
+        }
         if (timeLeft <= 0) {
           clearInterval(timerInterval);
-          endQuiz();
+          endQuiz("⏰ Time's up!");
         }
       }, 1000);
     }
 
-    function showQuestion(question) {
-      questionContainer.textContent = question.question;
-      answerButtons.innerHTML = "";
-      question.answers.forEach(answer => {
-        const button = document.createElement("button");
-        button.textContent = answer.text;
-        button.classList.add("answer-btn");
-        button.addEventListener("click", () => selectAnswer(button, answer.correct));
-        answerButtons.appendChild(button);
+    function showQuestion() {
+      const q = shuffledQuestions[currentQuestion];
+      document.getElementById("question").innerText = q.question;
+
+      const answerDiv = document.getElementById("answers");
+      answerDiv.innerHTML = "";
+
+      q.answers.forEach(a => {
+        const btn = document.createElement("button");
+        btn.innerText = a.text;
+        btn.classList.add("answer-btn");
+        btn.onclick = () => selectAnswer(btn, a.correct);
+        answerDiv.appendChild(btn);
       });
+
+      document.getElementById("nextBtn").disabled = true;
+      document.getElementById("score").innerText = `Score: ${score}/${shuffledQuestions.length}`;
     }
 
     function selectAnswer(button, correct) {
-      Array.from(answerButtons.children).forEach(btn => btn.disabled = true);
+      const allBtns = document.querySelectorAll(".answer-btn");
+      allBtns.forEach(btn => btn.disabled = true);
+
       if (correct) {
         button.classList.add("correct");
         score++;
       } else {
         button.classList.add("wrong");
       }
-      nextButton.style.display = "block";
+
+      document.getElementById("nextBtn").disabled = false;
+      document.getElementById("score").innerText = `Score: ${score}/${shuffledQuestions.length}`;
     }
 
-    nextButton.addEventListener("click", () => {
-      currentQuestionIndex++;
-      if (currentQuestionIndex < shuffledQuestions.length) {
-        nextButton.style.display = "none";
-        showQuestion(shuffledQuestions[currentQuestionIndex]);
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < shuffledQuestions.length) {
+        showQuestion();
       } else {
-        endQuiz();
+        endQuiz("🎉 Quiz Complete!");
       }
-    });
-
-    function endQuiz() {
-      clearInterval(timerInterval);
-      questionContainer.textContent = "";
-      answerButtons.innerHTML = "";
-      nextButton.style.display = "none";
-      resultContainer.textContent = `🔥 You got ${score} out of ${questions.length} correct! Great effort!`;
     }
 
-    startQuiz();
+    function endQuiz(message) {
+      clearInterval(timerInterval);
+      document.querySelector(".quiz-box").innerHTML = `
+        <h1>${message}</h1>
+        <p>You scored ${score} out of ${shuffledQuestions.length}.</p>
+        <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back to Quests</button>
+      `;
+    }
+
+    showQuestion();
+    startTimer();
   </script>
 </body>
 </html>

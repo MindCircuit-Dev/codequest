@@ -51,7 +51,7 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Right Sidebar (Pro Tips) */
+    /* Right Sidebar (Tutorial) */
     .tutorial-sidebar {
       width: 260px;
       background: #3b34c5;
@@ -59,13 +59,12 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      height: 100vh;
       position: fixed;
       right: 0;
       top: 0;
-      bottom: 0;
       color: #fff;
       overflow-y: auto;
-      box-sizing: border-box;
     }
 
     .tutorial-sidebar h2 {
@@ -92,7 +91,7 @@
       font-size: 0.9rem;
     }
 
-    /* Main Content */
+    /* Main Content (Welcome Section) */
     .main-content {
       margin-left: 240px;
       margin-right: 280px;
@@ -136,7 +135,7 @@
 
     /* Footer */
     footer {
-      position: relative;
+      position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -145,14 +144,6 @@
       text-align: center;
       padding: 10px 0;
       font-size: 0.85em;
-      margin-top: auto;
-    }
-
-    /* Allow page to scroll properly */
-    html, body {
-      height: auto;
-      min-height: 100vh;
-      overflow-y: auto;
     }
   </style>
 </head>
@@ -170,12 +161,12 @@
     </nav>
   </div>
 
-  <!-- Main Content -->
+  <!-- Main Content (Old Version Restored + Moved Up) -->
   <div class="main-content">
     <h1>Welcome to CodeQuest!</h1>
     <p>
-      Embark on a fun learning adventure that teaches you the basics of web and programming languages —
-      HTML, CSS, JavaScript, C, C++, and C# — step by step.
+      Embark on a fun learning adventure that teaches you the basics of web and programming languages — 
+      <strong>HTML, CSS, JavaScript, C, C++, and C#</strong> — step by step.
     </p>
 
     <div class="button-group">
@@ -184,9 +175,9 @@
     </div>
   </div>
 
-  <!-- Right Sidebar -->
+  <!-- Right Sidebar (Tutorial Section) -->
   <div class="tutorial-sidebar">
-    <h2>Pro Tips</h2>
+    <h2>Tutorial</h2>
     <p><strong>Learn coding faster and smarter</strong> through proven, research-based techniques from computer science education and real-world developer experience.</p>
 
     <h4>1. Start with the Fundamentals</h4>

@@ -1,120 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Quest - Normal</title>
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff8a00, #ffcc70);
-    color: #fff;
-    text-align: center;
-    min-height: 100vh;
-    padding: 30px;
-  }
-  .quiz-box {
-    background: rgba(255,255,255,0.1);
-    padding: 25px;
-    border-radius: 16px;
-    max-width: 700px;
-    margin: 0 auto;
-    box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  }
-  h1 {
-    margin-bottom: 10px;
-  }
-  #timer {
-    font-size: 18px;
-    background: rgba(255,255,255,0.2);
-    display: inline-block;
-    padding: 6px 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-  }
-  #question {
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  #answers button {
-    display: block;
-    width: 100%;
-    background: #fff;
-    color: #333;
-    border: none;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  #answers button:hover {
-    background: #ffeb3b;
-  }
-  #answers button.correct {
-    background-color: #4CAF50 !important;
-    color: #fff;
-  }
-  #answers button.wrong {
-    background-color: #f44336 !important;
-    color: #fff;
-  }
-  #score {
-    margin-top: 10px;
-  }
-  button.next-btn {
-    background: #fff;
-    color: #333;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin-top: 15px;
-    cursor: pointer;
-  }
-  button.next-btn:hover {
-    background: #ffeb3b;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HTML Quest - Normal</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #3f51b5, #2196f3);
+      color: white;
+      text-align: center;
+      padding: 30px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .quiz-box {
+      background: rgba(255,255,255,0.1);
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    h1 {
+      color: #ffeb3b;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 1.2rem;
+      margin: 15px 0;
+    }
+
+    .answer-btn {
+      display: block;
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 10px auto;
+      width: 80%;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .answer-btn:hover:not([disabled]) {
+      background: rgba(255,255,255,0.4);
+      transform: scale(1.03);
+    }
+
+    .answer-btn.correct {
+      background-color: #4caf50 !important;
+    }
+
+    .answer-btn.wrong {
+      background-color: #f44336 !important;
+    }
+
+    .next-btn {
+      background: #ffeb3b;
+      color: #333;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    .next-btn:hover {
+      background: #fff176;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    #score {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
 
-<div class="quiz-box">
-  <h1>HTML Quest – Normal</h1>
-  <div id="timer">Time Left: 60s</div>
-  <p id="question">Loading question...</p>
-  <div id="answers"></div>
-  <button class="next-btn" onclick="nextQuestion()">Next ➡</button>
-  <p id="score"></p>
-  <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back</button>
-</div>
+  <div class="quiz-box">
+    <h1>HTML Quest – Normal</h1>
+    <p id="question" class="question">Loading questions...</p>
+    <div id="answers"></div>
+    <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>Next ➡</button>
+    <p id="score"></p>
+    <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back</button>
+  </div>
 
-<script>
-const questions = [
-  { question: "Which HTML element defines the title of a document?", answers: [
-    { text: "<title>", correct: true },
-    { text: "<head>", correct: false },
-    { text: "<meta>", correct: false },
-    { text: "<header>", correct: false }
-  ]},
-  { question: "What tag is used to insert a line break?", answers: [
-    { text: "<break>", correct: false },
-    { text: "<lb>", correct: false },
-    { text: "<br>", correct: true },
-    { text: "<ln>", correct: false }
-  ]},
-  { question: "Which tag creates a numbered list?", answers: [
-    { text: "<ul>", correct: false },
-    { text: "<ol>", correct: true },
-    { text: "<list>", correct: false },
-    { text: "<li>", correct: false }
-  ]},
-  { question: "What does the <img> tag require to display an image?", answers: [
-    { text: "src and alt attributes", correct: true },
-    { text: "href and link attributes", correct: false },
-    { text: "source and name attributes", correct: false },
-    { text: "url and path attributes", correct: false }
-  ]},
-  { question: "Which HTML tag is used to define an internal style sheet?", answers: [
-    { text: "<script>", correct: false },
-    { text: "<style>", correct: true },
-    { text: "<css>", correct: false },
+  <script>
+    const questions = [
+      {
+        question: "What is the correct HTML tag for the largest heading?",
+        answers: [
+          { text: "<h1>", correct: true },
+          { text: "<h6>", correct: false },
+          { text: "<head>", correct: false },
+          { text: "<heading>", correct: false }
+        ]
+      },
+      {
+        question: "Which tag is used to create a hyperlink?",
+        answers: [
+          { text: "<a>", correct: true },
+          { text: "<link>", correct: false },
+          { text: "<href>", correct: false },
+          { text: "<url>", correct: false }
+        ]
+      },
+      {
+        question: "What tag is used to insert an image?",
+        answers: [
+          { text: "<img>", correct: true },
+          { text: "<src>", correct: false },
+          { text: "<pic>", correct: false },
+          { text: "<image>", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML element is used to create a numbered list?",
+        answers: [
+          { text: "<ol>", correct: true },
+          { text: "<ul>", correct: false },
+          { text: "<dl>", correct: false },
+          { text: "<list>", correct: false }
+        ]
+      },
+      {
+        question: "How do you insert a line break in HTML?",
+        answers: [
+          { text: "<br>", correct: true },
+          { text: "<break>", correct: false },
+          { text: "<lb>", correct: false },
+          { text: "<hr>", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML tag is used to define an internal style sheet?",
+        answers: [
+          { text: "<style>", correct: true },
+          { text: "<css>", correct: false },
+          { text: "<script>", correct: false },
+          { text: "<design>", correct: false }
+        ]
+      },
+      {
+        question: "Which tag creates a table row?",
+        answers: [
+          { text: "<tr>", correct: true },
+          { text: "<td>", correct: false },
+          { text: "<th>", correct: false },
+          { text: "<table>", correct: false }
+        ]
+      },
+      {
+        question: "What is the correct tag to make text bold?",
+        answers: [
+          { text: "<b>", correct: true },
+          { text: "<stronger>", correct: false },
+          { text: "<bold>", correct: false },
+          { text: "<strongtext>", correct: false }
+        ]
+      },
+      {
+        question: "What tag defines a paragraph?",
+        answers: [
+          { text: "<p>", correct: true },
+          { text: "<para>", correct: false },
+          { text: "<paragraph>", correct: false },
+          { text: "<pg>", correct: false }
+        ]
+      },
+      {
+        question: "Which tag is used to create an unordered list?",
+        answers: [
+          { text: "<ul>", correct: true },
+          { text: "<ol>", correct: false },
+          { text: "<li>", correct: false },
+          { text: "<dl>", correct: false }
+        ]
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    const shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+
+    function showQuestion() {
+      const q = shuffledQuestions[currentQuestion];
+      document.getElementById("question").innerText = q.question;
+
+      const answerDiv = document.getElementById("answers");
+      answerDiv.innerHTML = "";
+
+      q.answers.forEach(a => {
+        const btn = document.createElement("button");
+        btn.innerText = a.text;
+        btn.classList.add("answer-btn");
+        btn.onclick = () => selectAnswer(btn, a.correct);
+        answerDiv.appendChild(btn);
+      });
+
+      document.getElementById("nextBtn").disabled = true;
+      document.getElementById("score").innerText = `Score: ${score}/${shuffledQuestions.length}`;
+    }
+
+    function selectAnswer(button, correct) {
+      const allBtns = document.querySelectorAll(".answer-btn");
+      allBtns.forEach(btn => btn.disabled = true);
+
+      if (correct) {
+        button.classList.add("correct");
+        score++;
+      } else {
+        button.classList.add("wrong");
+      }
+
+      document.getElementById("nextBtn").disabled = false;
+      document.getElementById("score").innerText = `Score: ${score}/${shuffledQuestions.length}`;
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion < shuffledQuestions.length) {
+        showQuestion();
+      } else {
+        document.querySelector(".quiz-box").innerHTML = `
+          <h1>🎉 Quiz Complete!</h1>
+          <p>You scored ${score} out of ${shuffledQuestions.length}.</p>
+          <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back to Quests</button>
+        `;
+      }
+    }
+
+    // start quiz
+    showQuestion();
+  </script>
+</body>
+</html>

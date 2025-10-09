@@ -1,107 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Quest – Normal</title>
-<link rel="stylesheet" href="style.css">
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#ffa500,#ffcc70);
-    color:#fff;
-    text-align:center;
-    min-height:100vh;
-    padding:30px;
-  }
-  .quiz-box {
-    background: rgba(255,255,255,0.1);
-    padding: 25px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: auto;
-    position: relative;
-  }
-  #timer {
-    position: absolute;
-    top:15px;
-    right:20px;
-    background: rgba(255,255,255,0.2);
-    padding: 6px 12px;
-    border-radius:8px;
-    font-weight:bold;
-    color:#ffeb3b;
-  }
-  button {
-    background:#fff;
-    color:#333;
-    border:none;
-    padding:10px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    margin:6px;
-  }
-  button:hover { background:#ffeb3b; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Quest – Normal</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="quest-timer.js" defer></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff6f00, #ffcc80);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quiz-box {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 25px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 650px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: #ffeb3b;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    #timer {
+      background: rgba(0,0,0,0.3);
+      padding: 8px 16px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    #question {
+      font-size: 1.2rem;
+      margin: 20px 0;
+      font-weight: 500;
+    }
+
+    .answers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .answers button {
+      background: rgba(255,255,255,0.85);
+      color: #333;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.25s;
+    }
+
+    .answers button:hover {
+      background: #ffe082;
+      transform: translateY(-2px);
+    }
+
+    .answers button.correct {
+      background: #4caf50;
+      color: #fff;
+    }
+
+    .answers button.wrong {
+      background: #e53935;
+      color: #fff;
+    }
+
+    .answers button.disabled {
+      pointer-events: none;
+      opacity: 0.7;
+    }
+
+    #next-btn {
+      display: none;
+      background: #fff;
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #next-btn:hover {
+      background: #ffeb3b;
+    }
+  </style>
 </head>
 <body>
 
-<div class="quiz-box">
-  <div id="timer">⏱ 60s</div>
-  <h1>HTML Quest – Normal</h1>
-  <p id="question">Loading...</p>
-  <div id="answers"></div>
-  <button onclick="nextQuestion(questions)">Next ➡</button>
-  <p id="score" style="margin-top:10px;"></p>
-  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
-</div>
+  <div class="quiz-box">
+    <h1>HTML Quest – Normal</h1>
+    <div id="timer">⏳ Time: <span id="time-left">90</span>s</div>
+    <p id="question">Loading question...</p>
+    <div class="answers" id="answers"></div>
+    <button id="next-btn" onclick="nextQuestion()">Next ➡</button>
+  </div>
 
-<script src="quest-timer.js"></script>
-<script>
-const questions = [
-  {
-    question: "Which attribute is used to provide an alternative text for an image?",
-    answers: [
-      { text: "alt", correct: true },
-      { text: "src", correct: false },
-      { text: "title", correct: false },
-      { text: "href", correct: false }
-    ]
-  },
-  {
-    question: "What does the <ul> tag represent?",
-    answers: [
-      { text: "Ordered list", correct: false },
-      { text: "Unordered list", correct: true },
-      { text: "Underline text", correct: false },
-      { text: "User link", correct: false }
-    ]
-  },
-  {
-    question: "Which HTML element is used to define the footer of a page?",
-    answers: [
-      { text: "<footer>", correct: true },
-      { text: "<bottom>", correct: false },
-      { text: "<foot>", correct: false },
-      { text: "<section>", correct: false }
-    ]
-  },
-  {
-    question: "How can you make a numbered list in HTML?",
-    answers: [
-      { text: "<ol>", correct: true },
-      { text: "<ul>", correct: false },
-      { text: "<list>", correct: false },
-      { text: "<nl>", correct: false }
-    ]
-  }
-];
+  <script>
+    const questions = [
+      { q: "Which tag defines an internal style sheet?", a: ["<style>", "<css>", "<script>", "<head>"], correct: 0 },
+      { q: "Which HTML element is used to display a numbered list?", a: ["<ul>", "<list>", "<ol>", "<dl>"], correct: 2 },
+      { q: "Which attribute specifies an alternate text for an image?", a: ["src", "title", "alt", "href"], correct: 2 },
+      { q: "What is the correct HTML element for inserting a line?", a: ["<hr>", "<line>", "<break>", "<border>"], correct: 0 },
+      { q: "Which input type is used for entering a password?", a: ["text", "password", "pass", "secure"], correct: 1 },
+      { q: "Which HTML element is used to play video files?", a: ["<media>", "<video>", "<movie>", "<file>"], correct: 1 },
+      { q: "What is the purpose of the <thead> tag in a table?", a: ["Contains table header content", "Adds a border", "Defines rows", "Makes text bold"], correct: 0 },
+      { q: "Which tag creates a dropdown list?", a: ["<dropdown>", "<list>", "<select>", "<option>"], correct: 2 },
+      { q: "What does the <em> tag do?", a: ["Makes text italic", "Makes text bold", "Adds emphasis", "Both A and C"], correct: 3 },
+      { q: "Which attribute opens a link in a new tab?", a: ["open", "tab", "target='_blank'", "window='_new'"], correct: 2 }
+    ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  showQuestion(questions);
-  startTimer(60); // Normal = 60 seconds
-});
-</script>
+    let currentIndex = 0;
+    let score = 0;
+    let shuffledQuestions = [];
 
+    function shuffleArray(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function showQuestion() {
+      const question = shuffledQuestions[currentIndex];
+      document.getElementById("question").innerText = question.q;
+      const answersDiv = document.getElementById("answers");
+      answersDiv.innerHTML = "";
+
+      question.a.forEach((answer, index) => {
+        const btn = document.createElement("button");
+        btn.innerHTML = answer;
+        btn.onclick = () => selectAnswer(btn, index === question.correct);
+        answersDiv.appendChild(btn);
+      });
+    }
+
+    function selectAnswer(button, correct) {
+      const allButtons = document.querySelectorAll(".answers button");
+      allButtons.forEach(btn => btn.classList.add("disabled"));
+
+      if (correct) {
+        button.classList.add("correct");
+        score++;
+      } else {
+        button.classList.add("wrong");
+      }
+
+      document.getElementById("next-btn").style.display = "inline-block";
+    }
+
+    function nextQuestion() {
+      currentIndex++;
+      document.getElementById("next-btn").style.display = "none";
+      if (currentIndex < shuffledQuestions.length) {
+        showQuestion();
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      document.querySelector(".quiz-box").innerHTML = `
+        <h1>🎉 Quiz Complete!</h1>
+        <p>You scored <strong>${score}</strong> out of <strong>${shuffledQuestions.length}</strong>.</p>
+        <button onclick="window.location.href='choose-quest.html'">Back to Quests</button>
+      `;
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      shuffledQuestions = shuffleArray([...questions]);
+      showQuestion();
+      startTimer(90, showResult); // ⏳ TIMER = 90 seconds
+    });
+  </script>
 </body>
 </html>

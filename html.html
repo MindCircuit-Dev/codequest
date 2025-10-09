@@ -83,47 +83,60 @@
   <header>📘 Learn HTML</header>
 
   <div class="content">
-    <h2>1. What is HTML?</h2>
-    <p>HTML stands for <strong>HyperText Markup Language</strong>. It is the standard language for creating webpages and web applications. It describes the structure of a webpage using tags.</p>
 
-    <h2>2. Structure of an HTML Page</h2>
+    <!-- OLD CONTENT -->
+    <h2>What is HTML?</h2>
+    <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard language used to create and structure content on the World Wide Web. HTML describes how web pages are displayed by using elements and tags.</p>
+
+    <h2>Who is the Founder of HTML?</h2>
+    <p>HTML was created by <strong>Tim Berners-Lee</strong> in <strong>1991</strong> while working at CERN (European Organization for Nuclear Research). He also invented the first web browser and server.</p>
+
+    <h2>When did HTML Start?</h2>
+    <p>The first version of HTML was released in <strong>1993</strong>. Since then, several versions have been introduced, with <strong>HTML5</strong> being the latest major standard.</p>
+
+    <h2>Basic HTML Syntax</h2>
     <pre>
 &lt;!DOCTYPE html&gt;
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;My First Page&lt;/title&gt;
+    &lt;title&gt;My First HTML Page&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
   &lt;/body&gt;
 &lt;/html&gt;
     </pre>
+
     <div class="example-output">
       Output:<br>
-      <h1>Hello World!</h1>
+      <h1>Hello World</h1>
     </div>
 
-    <h2>3. Basic Tags</h2>
+    <h2>How to Input Commands</h2>
+    <p>You can use any text editor such as <strong>Notepad</strong>, <strong>VS Code</strong>, or <strong>Sublime Text</strong> to write HTML code. Save your file with the <code>.html</code> extension and open it in any browser to see the result.</p>
+
+    <!-- NEW EXTENDED LEARNING CONTENT -->
+    <h2>HTML Page Structure</h2>
+    <p>An HTML page is divided into two main parts: the <code>&lt;head&gt;</code> and the <code>&lt;body&gt;</code>. The head contains meta information, while the body contains all the visible content of the webpage.</p>
+
+    <h2>Common HTML Tags</h2>
     <ul>
       <li><code>&lt;h1&gt; - &lt;h6&gt;</code> : Headings</li>
       <li><code>&lt;p&gt;</code> : Paragraph</li>
-      <li><code>&lt;br&gt;</code> : Line Break</li>
-      <li><code>&lt;hr&gt;</code> : Horizontal Rule</li>
-      <li><code>&lt;strong&gt;</code> : Bold text</li>
-      <li><code>&lt;em&gt;</code> : Italic text</li>
+      <li><code>&lt;a&gt;</code> : Hyperlink</li>
+      <li><code>&lt;img&gt;</code> : Image</li>
+      <li><code>&lt;div&gt;</code> : Division or container</li>
+      <li><code>&lt;span&gt;</code> : Inline text container</li>
     </ul>
 
-    <h2>4. HTML Attributes</h2>
-    <p>Attributes provide additional information about HTML elements.</p>
+    <h2>Attributes in HTML</h2>
+    <p>Attributes give extra information to HTML elements. Example:</p>
     <pre>
 &lt;a href="https://www.google.com"&gt;Visit Google&lt;/a&gt;
     </pre>
-    <div class="example-output">
-      Output: <a href="https://www.google.com">Visit Google</a>
-    </div>
 
-    <h2>5. Lists</h2>
-    <p>There are two main types of lists:</p>
+    <h2>Lists</h2>
+    <p>HTML supports ordered and unordered lists:</p>
     <pre>
 &lt;ul&gt;
   &lt;li&gt;Apple&lt;/li&gt;
@@ -136,13 +149,7 @@
 &lt;/ol&gt;
     </pre>
 
-    <h2>6. Links and Images</h2>
-    <pre>
-&lt;a href="page.html"&gt;Go to Page&lt;/a&gt;
-&lt;img src="image.jpg" alt="Description"&gt;
-    </pre>
-
-    <h2>7. Tables</h2>
+    <h2>Tables</h2>
     <pre>
 &lt;table border="1"&gt;
   &lt;tr&gt;
@@ -156,7 +163,7 @@
 &lt;/table&gt;
     </pre>
 
-    <h2>8. Forms</h2>
+    <h2>Forms</h2>
     <pre>
 &lt;form&gt;
   Name: &lt;input type="text"&gt;&lt;br&gt;
@@ -165,33 +172,35 @@
 &lt;/form&gt;
     </pre>
 
-    <h2>9. Semantic Elements</h2>
-    <p>Semantic tags clearly describe their meaning to both the browser and developer.</p>
-    <ul>
-      <li><code>&lt;header&gt;</code> - Header section</li>
-      <li><code>&lt;nav&gt;</code> - Navigation links</li>
-      <li><code>&lt;article&gt;</code> - Independent content</li>
-      <li><code>&lt;footer&gt;</code> - Footer section</li>
-    </ul>
+    <h2>Semantic Tags</h2>
+    <p>HTML5 introduced semantic tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, and <code>&lt;footer&gt;</code>. They improve readability and SEO.</p>
 
-    <h2>10. HTML5 Features</h2>
-    <p>HTML5 introduced new elements and APIs such as:</p>
-    <ul>
-      <li><code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code></li>
-      <li><code>&lt;canvas&gt;</code> for drawing</li>
-      <li><code>&lt;section&gt;</code> and <code>&lt;aside&gt;</code></li>
-    </ul>
+    <h2>Multimedia</h2>
+    <pre>
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
 
-    <h2>11. Best Practices</h2>
+&lt;video width="320" height="240" controls&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+    </pre>
+
+    <h2>HTML5 Canvas Example</h2>
+    <pre>
+&lt;canvas id="myCanvas" width="200" height="100" style="border:1px solid black;"&gt;&lt;/canvas&gt;
+    </pre>
+
+    <h2>Best Practices</h2>
     <ul>
-      <li>Always use <code>&lt;!DOCTYPE html&gt;</code>.</li>
-      <li>Use proper indentation and nesting.</li>
-      <li>Include <code>alt</code> attributes in images.</li>
-      <li>Close all tags properly.</li>
+      <li>Use <code>&lt;!DOCTYPE html&gt;</code> at the top.</li>
+      <li>Properly nest elements.</li>
+      <li>Use lowercase for tags and attributes.</li>
+      <li>Always include <code>alt</code> text in images.</li>
     </ul>
 
     <a href="choose-quest.html" class="back-btn">← Back to Quests</a>
-  </div>
 
+  </div>
 </body>
 </html>

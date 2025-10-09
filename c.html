@@ -1,199 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CodeQuest | Learn C Language</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learn C Language - CodeQuest</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Poppins", Arial, sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(120deg, #e0f2fe, #dbeafe);
+      color: #222;
+      margin: 0;
+      padding: 0;
     }
 
     header {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(6px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
+      background-color: #2563eb;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
     }
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 0.8rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #38bdf8; }
 
-    .container {
-      flex: 1;
-      padding: 2rem;
+    .content {
       max-width: 900px;
-      margin: 0 auto;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      line-height: 1.7;
     }
 
     h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-      font-size: 2rem;
+      color: #2563eb;
+      border-left: 5px solid #2563eb;
+      padding-left: 10px;
     }
 
-    p {
-      text-align: center;
-      margin-bottom: 2rem;
-      opacity: 0.9;
-    }
-
-    .example-box {
-      background: rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
+    code {
+      background: #f4f4f4;
+      padding: 3px 6px;
+      border-radius: 5px;
+      font-size: 14px;
     }
 
     pre {
-      background: #1e293b;
-      color: #38bdf8;
-      padding: 1rem;
-      border-radius: 8px;
+      background: #1e1e1e;
+      color: #f5f5f5;
+      padding: 15px;
+      border-radius: 10px;
       overflow-x: auto;
     }
 
-    .output {
-      background: #0ea5e9;
-      color: #fff;
-      padding: 1rem;
+    .example-output {
+      background: #f8f9fa;
+      border-left: 5px solid #2563eb;
+      padding: 10px;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 30px;
+      background: #2563eb;
+      color: white;
+      padding: 12px 20px;
+      text-decoration: none;
       border-radius: 8px;
       font-weight: bold;
-      margin-top: 0.5rem;
-      text-align: center;
+      transition: 0.3s;
     }
 
-    button {
-      background: #38bdf8;
-      border: none;
-      color: #fff;
-      padding: 0.8rem 1.4rem;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s;
-      display: block;
-      margin: 1rem auto;
-    }
-
-    button:hover {
-      background: #0ea5e9;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
-      font-size: 0.9rem;
+    .back-btn:hover {
+      background: #1d4ed8;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>CodeQuest</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="html.html">HTML</a>
-      <a href="css.html">CSS</a>
-      <a href="js.html">JavaScript</a>
-      <a href="c.html">C</a>
-      <a href="cpp.html">C++</a>
-      <a href="csharp.html">C#</a>
-      <a href="quest.html">Quest</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
 
-  <div class="container">
-    <h2>Learn the C Language 🧠</h2>
-    <p>C is one of the most powerful programming languages — used to build operating systems, games, and more!</p>
+  <header>💻 Learn C Programming</header>
 
-    <div class="example-box">
-      <h3>🧩 Example 1: Basic C Program</h3>
-      <pre>
+  <div class="content">
+
+    <h2>What is C Language?</h2>
+    <p><strong>C</strong> is a powerful and general-purpose programming language developed to write operating systems, compilers, and embedded software. It provides low-level access to memory and offers excellent performance, which makes it one of the most important programming languages in computer science history.</p>
+
+    <h2>Who is the Founder of C?</h2>
+    <p>The C language was created by <strong>Dennis Ritchie</strong> at <strong>Bell Laboratories (AT&T)</strong> in the <strong>early 1970s</strong>. It evolved from an earlier language called <strong>B</strong>, which was developed by Ken Thompson.</p>
+
+    <h2>When Did C Start?</h2>
+    <p>C was officially released in <strong>1972</strong> and became widely used after the publication of the book <em>“The C Programming Language”</em> by Brian Kernighan and Dennis Ritchie in <strong>1978</strong>.</p>
+
+    <h2>Why is C Important?</h2>
+    <ul>
+      <li>It is the foundation of many modern languages like C++, Java, and C#.</li>
+      <li>It provides low-level memory access for system programming.</li>
+      <li>Most operating systems, including UNIX and parts of Windows, were written in C.</li>
+      <li>It is portable — code written in C can run on many types of computers.</li>
+      <li>It helps develop problem-solving and algorithmic thinking skills.</li>
+    </ul>
+
+    <h2>Without C Language Example</h2>
+    <p>Before C, programming was done in assembly language or machine code, which looked like this:</p>
+    <pre>
+MOV AX, 0002h
+MOV BX, 0003h
+ADD AX, BX
+INT 21h
+    </pre>
+    <p>This is hard to read and understand for humans.</p>
+
+    <h2>With C Language Example</h2>
+    <pre>
 #include &lt;stdio.h&gt;
 
 int main() {
-    printf("Hello, CodeQuest Learner!");
+    int a = 2, b = 3, sum;
+    sum = a + b;
+    printf("Sum: %d", sum);
     return 0;
 }
-      </pre>
-      <button onclick="showOutput1()">Run Code ▶️</button>
-      <div id="output1" class="output" style="display:none;">
-        Hello, CodeQuest Learner!
-      </div>
+    </pre>
+
+    <div class="example-output">
+      Output:<br>
+      Sum: 5
     </div>
 
-    <div class="example-box">
-      <h3>⚙️ Example 2: Variables in C</h3>
-      <pre>
+    <h2>Structure of a C Program</h2>
+    <p>A C program usually has the following parts:</p>
+    <ul>
+      <li><strong>Header Files</strong> – contain library functions (e.g., <code>#include &lt;stdio.h&gt;</code>).</li>
+      <li><strong>main() Function</strong> – entry point of every C program.</li>
+      <li><strong>Variable Declarations</strong> – where data is stored.</li>
+      <li><strong>Statements and Expressions</strong> – where logic and computation occur.</li>
+      <li><strong>Return Statement</strong> – ends the program.</li>
+    </ul>
+
+    <h2>Header Files</h2>
+    <p>Header files give access to built-in functions. Common examples:</p>
+    <ul>
+      <li><code>#include &lt;stdio.h&gt;</code> – standard input/output functions.</li>
+      <li><code>#include &lt;math.h&gt;</code> – mathematical functions.</li>
+      <li><code>#include &lt;string.h&gt;</code> – string manipulation.</li>
+    </ul>
+
+    <h2>Variables and Data Types</h2>
+    <p>Variables store data, and data types define what kind of data they hold.</p>
+    <pre>
+int age = 20;        // integer
+float height = 5.9;  // decimal number
+char grade = 'A';    // single character
+    </pre>
+
+    <h2>Input and Output</h2>
+    <pre>
 #include &lt;stdio.h&gt;
 
 int main() {
-    int age = 18;
-    printf("Your age is %d", age);
+    int age;
+    printf("Enter your age: ");
+    scanf("%d", &age);
+    printf("You are %d years old.", age);
     return 0;
 }
-      </pre>
-      <button onclick="showOutput2()">Run Code ▶️</button>
-      <div id="output2" class="output" style="display:none;">
-        Your age is 18
-      </div>
+    </pre>
+
+    <div class="example-output">
+      Output:<br>
+      Enter your age: 20<br>
+      You are 20 years old.
     </div>
 
-    <div class="example-box">
-      <h3>🧮 Example 3: Simple Math Operation</h3>
-      <pre>
+    <h2>Operators in C</h2>
+    <p>C uses operators to perform operations:</p>
+    <ul>
+      <li>Arithmetic: <code>+ - * / %</code></li>
+      <li>Relational: <code>== != &lt; &gt; &lt;= &gt;=</code></li>
+      <li>Logical: <code>&amp;&amp; || !</code></li>
+      <li>Assignment: <code>= += -= *= /=</code></li>
+    </ul>
+
+    <h2>Conditional Statements</h2>
+    <p>Conditions allow your program to make decisions:</p>
+    <pre>
 #include &lt;stdio.h&gt;
 
 int main() {
-    int a = 5, b = 3;
-    int sum = a + b;
-    printf("The sum is %d", sum);
+    int num = 10;
+    if(num > 0)
+        printf("Positive number");
+    else
+        printf("Negative number");
     return 0;
 }
-      </pre>
-      <button onclick="showOutput3()">Run Code ▶️</button>
-      <div id="output3" class="output" style="display:none;">
-        The sum is 8
-      </div>
+    </pre>
+
+    <h2>Loops in C</h2>
+    <p>Loops help repeat tasks easily.</p>
+    <pre>
+// Example of a for loop
+#include &lt;stdio.h&gt;
+
+int main() {
+    for(int i = 1; i <= 5; i++) {
+        printf("%d ", i);
+    }
+    return 0;
+}
+    </pre>
+
+    <div class="example-output">
+      Output:<br>
+      1 2 3 4 5
     </div>
+
+    <h2>Functions in C</h2>
+    <p>Functions divide programs into smaller parts, improving readability and reusability.</p>
+    <pre>
+#include &lt;stdio.h&gt;
+
+void greet() {
+    printf("Hello, C Learner!");
+}
+
+int main() {
+    greet();
+    return 0;
+}
+    </pre>
+
+    <div class="example-output">
+      Output:<br>
+      Hello, C Learner!
+    </div>
+
+    <h2>Arrays</h2>
+    <p>Arrays store multiple values of the same data type in one variable.</p>
+    <pre>
+int numbers[3] = {10, 20, 30};
+printf("%d", numbers[1]); // Output: 20
+    </pre>
+
+    <h2>Pointers</h2>
+    <p>Pointers store the memory address of another variable.</p>
+    <pre>
+int num = 10;
+int *ptr = &num;
+printf("Value: %d", *ptr); // Output: 10
+    </pre>
+
+    <h2>Conclusion</h2>
+    <p>The C language remains essential for programmers because it teaches how computers work at a deeper level. Mastering C builds a strong foundation for learning more advanced languages like C++, Java, and Python.</p>
+
+    <a href="choose-quest.html" class="back-btn">← Back to Quests</a>
+
   </div>
-
-  <footer>
-    © 2025 CodeQuest | Learn Coding the Fun Way
-  </footer>
-
-  <script>
-    function showOutput1() {
-      document.getElementById("output1").style.display = "block";
-    }
-    function showOutput2() {
-      document.getElementById("output2").style.display = "block";
-    }
-    function showOutput3() {
-      document.getElementById("output3").style.display = "block";
-    }
-  </script>
 </body>
 </html>

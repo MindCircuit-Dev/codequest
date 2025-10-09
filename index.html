@@ -4,221 +4,200 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeQuest | Learn Coding the Fun Way</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
+    /* --- GLOBAL STYLES --- */
     body {
       margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #4f46e5;
+      font-family: 'Poppins', sans-serif;
+      background-color: #5a4fff;
       color: white;
       display: flex;
-      height: 100vh;
-      overflow: hidden;
+      min-height: 100vh;
     }
 
-    /* Left Sidebar (Languages) */
+    /* --- SIDEBAR --- */
     .sidebar {
       width: 220px;
-      background: #3b34c5;
-      padding: 20px;
+      background-color: #4b3ef7;
+      padding: 20px 10px;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
-      height: 100vh;
+      justify-content: space-between;
       position: fixed;
-      left: 0;
       top: 0;
+      bottom: 0;
+      left: 0;
+      box-sizing: border-box;
     }
 
     .sidebar h2 {
-      color: #ffcb00;
-      text-align: center;
+      color: #ffd700;
+      text-align: left;
+      padding-left: 10px;
       margin-bottom: 20px;
-      font-weight: 700;
     }
 
-    .sidebar nav a {
-      display: block;
-      color: #fff;
+    .menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .menu li {
+      margin: 10px 0;
+    }
+
+    .menu a {
+      color: white;
       text-decoration: none;
-      padding: 10px 15px;
+      font-weight: bold;
+      display: block;
+      padding: 8px 10px;
       border-radius: 8px;
-      margin: 5px 0;
-      transition: background 0.3s;
+      transition: 0.3s;
     }
 
-    .sidebar nav a:hover {
-      background: rgba(255, 255, 255, 0.1);
+    .menu a:hover {
+      background-color: #6f5eff;
     }
 
-    /* Right Sidebar (Tutorial) */
-    .tutorial-sidebar {
-      width: 260px;
-      background: #3b34c5;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      height: 100vh;
-      position: fixed;
-      right: 0;
-      top: 0;
-      color: #fff;
-      overflow-y: auto;
-    }
-
-    .tutorial-sidebar h2 {
-      color: #ffcb00;
+    .sidebar-footer {
+      font-size: 12px;
       text-align: center;
-      margin-bottom: 20px;
-      font-weight: 700;
+      opacity: 0.8;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      padding-top: 10px;
     }
 
-    .tutorial-sidebar p {
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    .tutorial-sidebar h4 {
-      color: #ffd900;
-      margin-top: 15px;
-      margin-bottom: 5px;
-    }
-
-    .tutorial-sidebar ul {
-      padding-left: 18px;
-      margin-top: 5px;
-      font-size: 0.9rem;
-    }
-
-    /* Main Content */
+    /* --- MAIN CONTENT --- */
     .main-content {
       margin-left: 240px;
-      margin-right: 280px;
+      padding: 60px 40px 80px; /* bottom padding to make room for footer */
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .welcome-box {
+      background-color: #675aff;
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
       text-align: center;
-      height: 100vh;
+      margin-bottom: 50px;
     }
 
-    .main-content h1 {
-      font-size: 2.4em;
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .main-content p {
-      max-width: 600px;
-      color: #e0e0e0;
+    .welcome-box h1 {
+      font-size: 2.5rem;
       margin-bottom: 20px;
+    }
+
+    .welcome-box p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      color: #f0f0f0;
     }
 
     .button-group button {
-      background: #ffcb00;
-      color: #000;
-      font-weight: bold;
+      background-color: #ffd700;
+      color: black;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: 10px;
       cursor: pointer;
-      margin: 0 8px;
       transition: 0.3s;
     }
 
     .button-group button:hover {
-      background: #ffd740;
+      background-color: #ffec7a;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
     }
 
+    /* --- PAGE FOOTER --- */
     footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.1);
-      color: #fff;
       text-align: center;
-      padding: 10px 0;
-      font-size: 0.85em;
+      background-color: #5a4fff;
+      padding: 15px;
+      color: #f0f0f0;
+      font-size: 13px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      margin-left: 240px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 180px;
+      }
+
+      .main-content {
+        margin-left: 190px;
+      }
+
+      footer {
+        margin-left: 190px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main-content, footer {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Left Sidebar -->
+  <!-- Sidebar -->
   <div class="sidebar">
-    <h2>CodeQuest</h2>
-    <nav>
-      <a href="html.html">HTML</a>
-      <a href="css.html">CSS</a>
-      <a href="js.html">JavaScript</a>
-      <a href="c.html">C</a>
-      <a href="cpp.html">C++</a>
-      <a href="csharp.html">C#</a>
-    </nav>
+    <div>
+      <h2>CodeQuest</h2>
+      <ul class="menu">
+        <li><a href="html.html">HTML</a></li>
+        <li><a href="css.html">CSS</a></li>
+        <li><a href="javascript.html">JavaScript</a></li>
+        <li><a href="c.html">C</a></li>
+        <li><a href="cpp.html">C++</a></li>
+        <li><a href="csharp.html">C#</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <p>© 2025 CodeQuest<br>Learn Coding the Fun Way</p>
+    </div>
   </div>
 
   <!-- Main Content -->
   <div class="main-content">
-    <h1>Welcome to CodeQuest!</h1>
-    <p>
-      Embark on a fun learning adventure that teaches you the basics of web and programming languages —
-      HTML, CSS, JavaScript, C, C++, and C# — step by step.
-    </p>
+    <div class="welcome-box">
+      <h1>Welcome to CodeQuest!</h1>
+      <p>
+        Embark on a fun learning adventure that teaches you the basics of web and programming languages —
+        HTML, CSS, JavaScript, C, C++, and C# — step by step.
+      </p>
 
-    <div class="button-group">
-      <button onclick="startJourney()">Begin Your Study Journey 🚀</button>
-      <button onclick="startChallenge()">Take the Challenge 🧩</button>
+      <div class="button-group">
+        <button>Begin Your Study Journey 🚀</button>
+        <button>Take the Challenge ❄️</button>
+      </div>
     </div>
-  </div>
 
-  <!-- Right Sidebar (Tutorial Section) -->
-  <div class="tutorial-sidebar">
-    <h2>Tutorial</h2>
-    <p><strong>Learn coding faster and smarter</strong> through proven, research-based techniques from computer science education and real-world developer experience.</p>
-
-    <h4>1. Start with the Fundamentals</h4>
-    <p>Master the basics: syntax, variables, loops, and logic. Strong fundamentals make every new language easier to learn.</p>
-
-    <h4>2. Practice Every Day</h4>
-    <p>Consistency beats intensity. Short, focused sessions (25–30 mins) daily improve memory and skill retention.</p>
-
-    <h4>3. Build Small Projects</h4>
-    <p>Apply your lessons! After learning HTML/CSS, design a webpage; after learning JS, build an interactive quiz.</p>
-
-    <h4>4. Learn by Debugging</h4>
-    <p>Debugging helps you understand how code really works. Don’t fear errors — analyze, fix, and learn.</p>
-
-    <h4>5. Join a Community</h4>
-    <p>Connect with other learners on GitHub or Reddit. Sharing knowledge accelerates growth.</p>
-
-    <h4>6. Use Real Resources</h4>
-    <ul>
-      <li>W3Schools — Learn syntax interactively.</li>
-      <li>MDN Web Docs — Deep dive into web technologies.</li>
-      <li>freeCodeCamp — Practice coding projects.</li>
-    </ul>
-
-    <h4>7. Stay Curious</h4>
-    <p>Experiment and ask “why?” every time. The best coders are lifelong learners.</p>
+    <p style="text-align:center; color:#e0e0e0; font-size:14px;">
+      Master coding through research-backed tutorials, interactive challenges, and practical examples.
+      Let’s make coding easy and enjoyable for everyone!
+    </p>
   </div>
 
   <!-- Footer -->
   <footer>
     © 2025 CodeQuest | Learn Coding the Fun Way
   </footer>
-
-  <script>
-    function startJourney() {
-      alert("Great! Let’s start your coding adventure!");
-      window.location.href = "html.html";
-    }
-
-    function startChallenge() {
-      alert("Ready to test your skills? Let's take on the challenge!");
-      window.location.href = "choose-quest.html";
-    }
-  </script>
 </body>
 </html>

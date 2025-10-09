@@ -100,11 +100,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       text-align: center;
       height: 100vh;
-      padding-top: 80px; /* move content upward */
-      box-sizing: border-box;
+      transform: translateY(-40px); /* moves it slightly upward */
     }
 
     .main-content h1 {
@@ -137,7 +136,7 @@
 
     /* Footer */
     footer {
-      position: relative; /* prevent overlap */
+      position: relative;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -185,7 +184,7 @@
     </div>
   </div>
 
-  <!-- Right Sidebar (Pro Tips Section) -->
+  <!-- Right Sidebar -->
   <div class="tutorial-sidebar">
     <h2>Pro Tips</h2>
     <p><strong>Learn coding faster and smarter</strong> through proven, research-based techniques from computer science education and real-world developer experience.</p>

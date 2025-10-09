@@ -79,6 +79,17 @@
       background: #fff176;
     }
 
+    #timer {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .warning {
+      color: #ff1744;
+    }
+
     @keyframes fadeIn {
       from {opacity: 0; transform: translateY(10px);}
       to {opacity: 1; transform: translateY(0);}
@@ -94,6 +105,7 @@
 
   <div class="quiz-box">
     <h1>HTML Quest – Normal</h1>
+    <div id="timer">Time left: 90s</div>
     <p id="question" class="question">Loading questions...</p>
     <div id="answers"></div>
     <button class="next-btn" id="nextBtn" onclick="nextQuestion()" disabled>Next ➡</button>
@@ -197,7 +209,24 @@
 
     let currentQuestion = 0;
     let score = 0;
+    let timeLeft = 90;
+    let timerInterval;
     const shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+
+    function startTimer() {
+      const timerDisplay = document.getElementById("timer");
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.innerText = `Time left: ${timeLeft}s`;
+        if (timeLeft <= 10) {
+          timerDisplay.classList.add("warning");
+        }
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          endQuiz("⏰ Time's up!");
+        }
+      }, 1000);
+    }
 
     function showQuestion() {
       const q = shuffledQuestions[currentQuestion];
@@ -238,16 +267,22 @@
       if (currentQuestion < shuffledQuestions.length) {
         showQuestion();
       } else {
-        document.querySelector(".quiz-box").innerHTML = `
-          <h1>🎉 Quiz Complete!</h1>
-          <p>You scored ${score} out of ${shuffledQuestions.length}.</p>
-          <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back to Quests</button>
-        `;
+        endQuiz("🎉 Quiz Complete!");
       }
     }
 
-    // start quiz
+    function endQuiz(message) {
+      clearInterval(timerInterval);
+      document.querySelector(".quiz-box").innerHTML = `
+        <h1>${message}</h1>
+        <p>You scored ${score} out of ${shuffledQuestions.length}.</p>
+        <button class="next-btn" onclick="window.location.href='choose-quest.html'">⬅ Back to Quests</button>
+      `;
+    }
+
+    // Start quiz
     showQuestion();
+    startTimer();
   </script>
 </body>
 </html>

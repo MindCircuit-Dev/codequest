@@ -51,7 +51,7 @@
       background: rgba(255, 255, 255, 0.1);
     }
 
-    /* Right Sidebar (Tutorial) */
+    /* Right Sidebar (Pro Tips) */
     .tutorial-sidebar {
       width: 260px;
       background: #3b34c5;
@@ -59,12 +59,13 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      height: 100vh;
       position: fixed;
       right: 0;
       top: 0;
+      bottom: 0;
       color: #fff;
       overflow-y: auto;
+      box-sizing: border-box;
     }
 
     .tutorial-sidebar h2 {
@@ -99,9 +100,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       text-align: center;
       height: 100vh;
+      padding-top: 80px; /* move content upward */
+      box-sizing: border-box;
     }
 
     .main-content h1 {
@@ -132,8 +135,9 @@
       background: #ffd740;
     }
 
+    /* Footer */
     footer {
-      position: fixed;
+      position: relative; /* prevent overlap */
       bottom: 0;
       left: 0;
       width: 100%;
@@ -142,6 +146,14 @@
       text-align: center;
       padding: 10px 0;
       font-size: 0.85em;
+      margin-top: auto;
+    }
+
+    /* Allow page to scroll properly */
+    html, body {
+      height: auto;
+      min-height: 100vh;
+      overflow-y: auto;
     }
   </style>
 </head>
@@ -173,9 +185,9 @@
     </div>
   </div>
 
-  <!-- Right Sidebar (Tutorial Section) -->
+  <!-- Right Sidebar (Pro Tips Section) -->
   <div class="tutorial-sidebar">
-    <h2>Tutorial</h2>
+    <h2>Pro Tips</h2>
     <p><strong>Learn coding faster and smarter</strong> through proven, research-based techniques from computer science education and real-world developer experience.</p>
 
     <h4>1. Start with the Fundamentals</h4>

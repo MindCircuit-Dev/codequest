@@ -1,125 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Quest – God Mode</title>
-<link rel="stylesheet" href="style.css">
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#8b0000,#ff4500);
-    color:#fff;
-    text-align:center;
-    min-height:100vh;
-    padding:30px;
-  }
-  .quiz-box {
-    background: rgba(255,255,255,0.1);
-    padding: 25px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: auto;
-    position: relative;
-  }
-  #timer {
-    position: absolute;
-    top:15px;
-    right:20px;
-    background: rgba(255,255,255,0.2);
-    padding: 6px 12px;
-    border-radius:8px;
-    font-weight:bold;
-    color:#ffeb3b;
-  }
-  button {
-    background:#fff;
-    color:#333;
-    border:none;
-    padding:10px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    margin:6px;
-  }
-  button:hover { background:#ffeb3b; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML God Mode | CodeQuest</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #000000, #4a148c);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .quiz-container {
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid #6a1b9a;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(138, 43, 226, 0.4);
+      width: 90%;
+      max-width: 750px;
+      padding: 30px;
+      margin-top: 60px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    h1 {
+      color: #ffea00;
+      margin-bottom: 15px;
+      font-size: 2rem;
+    }
+
+    #timer {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff5252;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .answer-btn {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin: 8px;
+      cursor: pointer;
+      width: 80%;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .answer-btn:hover:not([disabled]) {
+      background: #9c27b0;
+      transform: scale(1.05);
+    }
+
+    .answer-btn.correct {
+      background: #00e676;
+    }
+
+    .answer-btn.wrong {
+      background: #d32f2f;
+    }
+
+    .next-btn {
+      background: #ffea00;
+      color: #000;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      margin-top: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      display: none;
+      font-weight: bold;
+    }
+
+    .next-btn:hover {
+      background: #fff176;
+    }
+
+    #result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+  <div class="quiz-container">
+    <h1>HTML God Mode ⚡</h1>
+    <div id="timer">Time Left: 30s</div>
+    <div id="question-container">
+      <div id="question" class="question"></div>
+      <div id="answer-buttons" class="answer-buttons"></div>
+    </div>
+    <button id="next-btn" class="next-btn">Next</button>
+    <div id="result"></div>
+  </div>
 
-<div class="quiz-box">
-  <div id="timer">⏱ 40s</div>
-  <h1>HTML Quest – God Mode</h1>
-  <p id="question">Loading...</p>
-  <div id="answers"></div>
-  <button onclick="nextQuestion(questions)">Next ➡</button>
-  <p id="score" style="margin-top:10px;"></p>
-  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
-</div>
+  <script>
+    const questions = [
+      {
+        question: "Which HTML5 feature allows a web page to store data locally within the user's browser?",
+        answers: [
+          { text: "Web Storage API (localStorage)", correct: true },
+          { text: "Session Cookies", correct: false },
+          { text: "HTTP Cache", correct: false },
+          { text: "Indexed URL", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML tag defines self-contained content, like a blog post?",
+        answers: [
+          { text: "<article>", correct: true },
+          { text: "<section>", correct: false },
+          { text: "<div>", correct: false },
+          { text: "<aside>", correct: false }
+        ]
+      },
+      {
+        question: "What does the 'defer' attribute do in the <script> tag?",
+        answers: [
+          { text: "Executes the script after the HTML document is fully parsed", correct: true },
+          { text: "Executes script immediately", correct: false },
+          { text: "Ignores external JavaScript files", correct: false },
+          { text: "Loads the script in a separate thread", correct: false }
+        ]
+      },
+      {
+        question: "Which element provides a fallback message for browsers that do not support <canvas>?",
+        answers: [
+          { text: "Text inside <canvas> tags", correct: true },
+          { text: "alt attribute", correct: false },
+          { text: "aria-label", correct: false },
+          { text: "<nosupport>", correct: false }
+        ]
+      },
+      {
+        question: "Which API allows real-time communication between browsers?",
+        answers: [
+          { text: "WebRTC", correct: true },
+          { text: "WebSocket", correct: false },
+          { text: "Fetch API", correct: false },
+          { text: "Service Worker", correct: false }
+        ]
+      },
+      {
+        question: "What is the purpose of the <track> element in HTML5?",
+        answers: [
+          { text: "Provides text tracks (like subtitles) for video/audio elements", correct: true },
+          { text: "Adds tracking cookies", correct: false },
+          { text: "Tracks user activity on the site", correct: false },
+          { text: "Displays progress bar", correct: false }
+        ]
+      },
+      {
+        question: "What is the default character encoding for HTML5?",
+        answers: [
+          { text: "UTF-8", correct: true },
+          { text: "ASCII", correct: false },
+          { text: "ISO-8859-1", correct: false },
+          { text: "Unicode", correct: false }
+        ]
+      },
+      {
+        question: "Which attribute in <iframe> enhances security by restricting actions?",
+        answers: [
+          { text: "sandbox", correct: true },
+          { text: "secure", correct: false },
+          { text: "protection", correct: false },
+          { text: "limit", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML tag improves accessibility for screen readers?",
+        answers: [
+          { text: "<label>", correct: true },
+          { text: "<span>", correct: false },
+          { text: "<legend>", correct: false },
+          { text: "<b>", correct: false }
+        ]
+      },
+      {
+        question: "What is the purpose of the <noscript> tag?",
+        answers: [
+          { text: "Displays fallback content when JavaScript is disabled", correct: true },
+          { text: "Blocks JavaScript execution", correct: false },
+          { text: "Shows script output", correct: false },
+          { text: "Loads inline scripts only", correct: false }
+        ]
+      }
+    ];
 
-<script src="quest-timer.js"></script>
-<script>
-const questions = [
-  {
-    question: "Which HTML5 element is used to specify navigation links?",
-    answers: [
-      { text: "<nav>", correct: true },
-      { text: "<navigation>", correct: false },
-      { text: "<menu>", correct: false },
-      { text: "<section>", correct: false }
-    ]
-  },
-  {
-    question: "Which element defines a section in a document?",
-    answers: [
-      { text: "<section>", correct: true },
-      { text: "<div>", correct: false },
-      { text: "<article>", correct: false },
-      { text: "<span>", correct: false }
-    ]
-  },
-  {
-    question: "Which attribute is used to specify a unique id for an HTML element?",
-    answers: [
-      { text: "id", correct: true },
-      { text: "class", correct: false },
-      { text: "name", correct: false },
-      { text: "key", correct: false }
-    ]
-  },
-  {
-    question: "What is the correct HTML element for playing audio?",
-    answers: [
-      { text: "<audio>", correct: true },
-      { text: "<sound>", correct: false },
-      { text: "<music>", correct: false },
-      { text: "<mp3>", correct: false }
-    ]
-  },
-  {
-    question: "Which HTML tag is used to define a client-side script?",
-    answers: [
-      { text: "<script>", correct: true },
-      { text: "<js>", correct: false },
-      { text: "<code>", correct: false },
-      { text: "<program>", correct: false }
-    ]
-  },
-  {
-    question: "Which HTML element is used to define the document’s title?",
-    answers: [
-      { text: "<title>", correct: true },
-      { text: "<head>", correct: false },
-      { text: "<meta>", correct: false },
-      { text: "<header>", correct: false }
-    ]
-  }
-];
+    let shuffledQuestions, currentQuestionIndex = 0, score = 0, timeLeft = 30, timerInterval;
 
-document.addEventListener("DOMContentLoaded", () => {
-  showQuestion(questions);
-  startTimer(40); // God Mode = 40 seconds
-});
-</script>
+    const questionContainer = document.getElementById("question");
+    const answerButtons = document.getElementById("answer-buttons");
+    const nextButton = document.getElementById("next-btn");
+    const resultContainer = document.getElementById("result");
+    const timerDisplay = document.getElementById("timer");
 
+    function startQuiz() {
+      shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+      currentQuestionIndex = 0;
+      score = 0;
+      timeLeft = 30;
+      nextButton.style.display = "none";
+      resultContainer.textContent = "";
+      startTimer();
+      showQuestion(shuffledQuestions[currentQuestionIndex]);
+    }
+
+    function startTimer() {
+      timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          endQuiz();
+        }
+      }, 1000);
+    }
+
+    function showQuestion(question) {
+      questionContainer.textContent = question.question;
+      answerButtons.innerHTML = "";
+      question.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.textContent = answer.text;
+        button.classList.add("answer-btn");
+        button.addEventListener("click", () => selectAnswer(button, answer.correct));
+        answerButtons.appendChild(button);
+      });
+    }
+
+    function selectAnswer(button, correct) {
+      Array.from(answerButtons.children).forEach(btn => btn.disabled = true);
+      if (correct) {
+        button.classList.add("correct");
+        score++;
+      } else {
+        button.classList.add("wrong");
+      }
+      nextButton.style.display = "block";
+    }
+
+    nextButton.addEventListener("click", () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < shuffledQuestions.length) {
+        nextButton.style.display = "none";
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+      } else {
+        endQuiz();
+      }
+    });
+
+    function endQuiz() {
+      clearInterval(timerInterval);
+      questionContainer.textContent = "";
+      answerButtons.innerHTML = "";
+      nextButton.style.display = "none";
+      resultContainer.textContent = `⚡ Godlike! You scored ${score} out of ${questions.length}!`;
+    }
+
+    startQuiz();
+  </script>
 </body>
 </html>

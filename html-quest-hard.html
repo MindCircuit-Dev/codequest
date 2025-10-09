@@ -1,116 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Quest – Hard</title>
-<link rel="stylesheet" href="style.css">
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#ff4500,#ff8c00);
-    color:#fff;
-    text-align:center;
-    min-height:100vh;
-    padding:30px;
-  }
-  .quiz-box {
-    background: rgba(255,255,255,0.1);
-    padding: 25px;
-    border-radius: 16px;
-    max-width: 600px;
-    margin: auto;
-    position: relative;
-  }
-  #timer {
-    position: absolute;
-    top:15px;
-    right:20px;
-    background: rgba(255,255,255,0.2);
-    padding: 6px 12px;
-    border-radius:8px;
-    font-weight:bold;
-    color:#ffeb3b;
-  }
-  button {
-    background:#fff;
-    color:#333;
-    border:none;
-    padding:10px 16px;
-    border-radius:8px;
-    cursor:pointer;
-    margin:6px;
-  }
-  button:hover { background:#ffeb3b; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Hard Challenge | CodeQuest</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffebee, #e3f2fd);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .quiz-container {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      width: 90%;
+      max-width: 750px;
+      padding: 30px;
+      margin-top: 60px;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
+
+    h1 {
+      color: #b71c1c;
+      margin-bottom: 15px;
+    }
+
+    #timer {
+      font-size: 22px;
+      font-weight: bold;
+      color: #d32f2f;
+      margin-bottom: 15px;
+    }
+
+    .question {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .answer-btn {
+      background: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 20px;
+      margin: 8px;
+      cursor: pointer;
+      width: 80%;
+      font-size: 16px;
+      transition: all 0.2s ease;
+    }
+
+    .answer-btn:hover:not([disabled]) {
+      background: #0d47a1;
+      transform: scale(1.05);
+    }
+
+    .answer-btn.correct {
+      background: #2e7d32;
+    }
+
+    .answer-btn.wrong {
+      background: #c62828;
+    }
+
+    .next-btn {
+      background: #b71c1c;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      margin-top: 25px;
+      font-size: 16px;
+      cursor: pointer;
+      display: none;
+    }
+
+    .next-btn:hover {
+      background: #7f0000;
+    }
+
+    #result {
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
+  <div class="quiz-container">
+    <h1>HTML Hard Challenge</h1>
+    <div id="timer">Time Left: 45s</div>
+    <div id="question-container">
+      <div id="question" class="question"></div>
+      <div id="answer-buttons" class="answer-buttons"></div>
+    </div>
+    <button id="next-btn" class="next-btn">Next</button>
+    <div id="result"></div>
+  </div>
 
-<div class="quiz-box">
-  <div id="timer">⏱ 50s</div>
-  <h1>HTML Quest – Hard</h1>
-  <p id="question">Loading...</p>
-  <div id="answers"></div>
-  <button onclick="nextQuestion(questions)">Next ➡</button>
-  <p id="score" style="margin-top:10px;"></p>
-  <button onclick="window.location.href='choose-quest.html'">⬅ Back</button>
-</div>
+  <script>
+    const questions = [
+      {
+        question: "What is the purpose of the <meta> tag in HTML?",
+        answers: [
+          { text: "To provide metadata about the document such as description or keywords", correct: true },
+          { text: "To link external JavaScript files", correct: false },
+          { text: "To define the footer of the page", correct: false },
+          { text: "To add comments in HTML", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML element defines navigation links?",
+        answers: [
+          { text: "<nav>", correct: true },
+          { text: "<navigate>", correct: false },
+          { text: "<menu>", correct: false },
+          { text: "<section>", correct: false }
+        ]
+      },
+      {
+        question: "Which attribute is used in HTML5 for responsive images?",
+        answers: [
+          { text: "srcset", correct: true },
+          { text: "responsive", correct: false },
+          { text: "src", correct: false },
+          { text: "picture", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML5 element is used to play video files?",
+        answers: [
+          { text: "<media>", correct: false },
+          { text: "<video>", correct: true },
+          { text: "<source>", correct: false },
+          { text: "<player>", correct: false }
+        ]
+      },
+      {
+        question: "What is the correct way to embed audio in HTML5?",
+        answers: [
+          { text: "<audio controls><source src='sound.mp3'></audio>", correct: true },
+          { text: "<sound src='sound.mp3'>", correct: false },
+          { text: "<music controls='sound.mp3'>", correct: false },
+          { text: "<media sound='sound.mp3'>", correct: false }
+        ]
+      },
+      {
+        question: "Which input type defines a slider control?",
+        answers: [
+          { text: "<input type='range'>", correct: true },
+          { text: "<input type='slider'>", correct: false },
+          { text: "<input type='scroll'>", correct: false },
+          { text: "<input type='bar'>", correct: false }
+        ]
+      },
+      {
+        question: "What does the <canvas> element do?",
+        answers: [
+          { text: "Draw graphics using JavaScript", correct: true },
+          { text: "Display videos", correct: false },
+          { text: "Add responsive layout", correct: false },
+          { text: "Create forms", correct: false }
+        ]
+      },
+      {
+        question: "Which HTML tag is used to define client-side scripts?",
+        answers: [
+          { text: "<script>", correct: true },
+          { text: "<code>", correct: false },
+          { text: "<javascript>", correct: false },
+          { text: "<js>", correct: false }
+        ]
+      },
+      {
+        question: "How do you specify text direction in HTML?",
+        answers: [
+          { text: "dir attribute", correct: true },
+          { text: "lang attribute", correct: false },
+          { text: "direction tag", correct: false },
+          { text: "align attribute", correct: false }
+        ]
+      },
+      {
+        question: "Which tag is used to specify a container for an external application or interactive content?",
+        answers: [
+          { text: "<object>", correct: true },
+          { text: "<embed>", correct: false },
+          { text: "<iframe>", correct: false },
+          { text: "<app>", correct: false }
+        ]
+      }
+    ];
 
-<script src="quest-timer.js"></script>
-<script>
-const questions = [
-  {
-    question: "Which HTML element is used to embed JavaScript?",
-    answers: [
-      { text: "<script>", correct: true },
-      { text: "<js>", correct: false },
-      { text: "<javascript>", correct: false },
-      { text: "<code>", correct: false }
-    ]
-  },
-  {
-    question: "Which attribute specifies the URL of an external CSS file?",
-    answers: [
-      { text: "href", correct: true },
-      { text: "src", correct: false },
-      { text: "link", correct: false },
-      { text: "style", correct: false }
-    ]
-  },
-  {
-    question: "What does the <meta charset='UTF-8'> tag do?",
-    answers: [
-      { text: "Sets the page character encoding", correct: true },
-      { text: "Links to an external stylesheet", correct: false },
-      { text: "Defines metadata for search engines", correct: false },
-      { text: "Sets the page title", correct: false }
-    ]
-  },
-  {
-    question: "Which tag is used to create a table row?",
-    answers: [
-      { text: "<tr>", correct: true },
-      { text: "<td>", correct: false },
-      { text: "<table>", correct: false },
-      { text: "<row>", correct: false }
-    ]
-  },
-  {
-    question: "What is the correct HTML element for inserting a line break?",
-    answers: [
-      { text: "<br>", correct: true },
-      { text: "<break>", correct: false },
-      { text: "<lb>", correct: false },
-      { text: "<hr>", correct: false }
-    ]
-  }
-];
+    let shuffledQuestions, currentQuestionIndex = 0, score = 0, timeLeft = 45, timerInterval;
 
-document.addEventListener("DOMContentLoaded", () => {
-  showQuestion(questions);
-  startTimer(50); // Hard = 50 seconds
-});
-</script>
+    const questionContainer = document.getElementById("question");
+    const answerButtons = document.getElementById("answer-buttons");
+    const nextButton = document.getElementById("next-btn");
+    const resultContainer = document.getElementById("result");
+    const timerDisplay = document.getElementById("timer");
 
+    function startQuiz() {
+      shuffledQuestions = questions.sort(() => Math.random() - 0.5);
+      currentQuestionIndex = 0;
+      score = 0;
+      timeLeft = 45;
+      nextButton.style.display = "none";
+      resultContainer.textContent = "";
+      startTimer();
+      showQuestion(shuffledQuestions[currentQuestionIndex]);
+    }
+
+    function startTimer() {
+      timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          endQuiz();
+        }
+      }, 1000);
+    }
+
+    function showQuestion(question) {
+      questionContainer.textContent = question.question;
+      answerButtons.innerHTML = "";
+      question.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.textContent = answer.text;
+        button.classList.add("answer-btn");
+        button.addEventListener("click", () => selectAnswer(button, answer.correct));
+        answerButtons.appendChild(button);
+      });
+    }
+
+    function selectAnswer(button, correct) {
+      Array.from(answerButtons.children).forEach(btn => btn.disabled = true);
+      if (correct) {
+        button.classList.add("correct");
+        score++;
+      } else {
+        button.classList.add("wrong");
+      }
+      nextButton.style.display = "block";
+    }
+
+    nextButton.addEventListener("click", () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < shuffledQuestions.length) {
+        nextButton.style.display = "none";
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+      } else {
+        endQuiz();
+      }
+    });
+
+    function endQuiz() {
+      clearInterval(timerInterval);
+      questionContainer.textContent = "";
+      answerButtons.innerHTML = "";
+      nextButton.style.display = "none";
+      resultContainer.textContent = `🔥 You got ${score} out of ${questions.length} correct! Great effort!`;
+    }
+
+    startQuiz();
+  </script>
 </body>
 </html>

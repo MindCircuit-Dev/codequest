@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeQuest | Learn Coding the Fun Way</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
@@ -28,6 +27,7 @@
       position: fixed;
       left: 0;
       top: 0;
+      z-index: 10;
     }
 
     .sidebar h2 {
@@ -65,6 +65,7 @@
       top: 0;
       color: #fff;
       overflow-y: auto;
+      padding-bottom: 60px; /* space for footer */
     }
 
     .tutorial-sidebar h2 {
@@ -142,6 +143,64 @@
       text-align: center;
       padding: 10px 0;
       font-size: 0.85em;
+      z-index: 20;
+    }
+
+    /* ✅ Mobile Responsive Layout */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        height: auto;
+        overflow-y: auto;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .sidebar h2 {
+        display: none; /* hide logo for compact view */
+      }
+
+      .sidebar nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .sidebar nav a {
+        margin: 5px;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+
+      .tutorial-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+        border-top: 2px solid rgba(255, 255, 255, 0.2);
+        overflow: visible;
+      }
+
+      .main-content {
+        margin: 0;
+        padding: 40px 20px;
+        height: auto;
+      }
+
+      .main-content h1 {
+        font-size: 1.8em;
+      }
+
+      footer {
+        position: relative;
+      }
     }
   </style>
 </head>
@@ -166,7 +225,6 @@
       Embark on a fun learning adventure that teaches you the basics of web and programming languages —
       HTML, CSS, JavaScript, C, C++, and C# — step by step.
     </p>
-
     <div class="button-group">
       <button onclick="startJourney()">Begin Your Study Journey 🚀</button>
       <button onclick="startChallenge()">Take the Challenge 🧩</button>
@@ -177,29 +235,22 @@
   <div class="tutorial-sidebar">
     <h2>Tutorial</h2>
     <p><strong>Learn coding faster and smarter</strong> through proven, research-based techniques from computer science education and real-world developer experience.</p>
-
     <h4>1. Start with the Fundamentals</h4>
     <p>Master the basics: syntax, variables, loops, and logic. Strong fundamentals make every new language easier to learn.</p>
-
     <h4>2. Practice Every Day</h4>
     <p>Consistency beats intensity. Short, focused sessions (25–30 mins) daily improve memory and skill retention.</p>
-
     <h4>3. Build Small Projects</h4>
     <p>Apply your lessons! After learning HTML/CSS, design a webpage; after learning JS, build an interactive quiz.</p>
-
     <h4>4. Learn by Debugging</h4>
     <p>Debugging helps you understand how code really works. Don’t fear errors — analyze, fix, and learn.</p>
-
     <h4>5. Join a Community</h4>
     <p>Connect with other learners on GitHub or Reddit. Sharing knowledge accelerates growth.</p>
-
     <h4>6. Use Real Resources</h4>
     <ul>
       <li>W3Schools — Learn syntax interactively.</li>
       <li>MDN Web Docs — Deep dive into web technologies.</li>
       <li>freeCodeCamp — Practice coding projects.</li>
     </ul>
-
     <h4>7. Stay Curious</h4>
     <p>Experiment and ask “why?” every time. The best coders are lifelong learners.</p>
   </div>

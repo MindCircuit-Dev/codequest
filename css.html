@@ -11,7 +11,7 @@
       color: #fff;
       margin: 0;
       text-align: center;
-      padding-bottom: 80px;
+      padding-bottom: 100px;
     }
 
     header {
@@ -55,6 +55,15 @@
       overflow-x: auto;
     }
 
+    .example-output {
+      background: #f9f9f9;
+      border-left: 5px solid #4f46e5;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 10px;
+      color: #222;
+    }
+
     .styled-box {
       background: #ffeb3b;
       color: #333;
@@ -63,6 +72,28 @@
       border-radius: 8px;
       display: inline-block;
       font-weight: 500;
+    }
+
+    .nav-buttons {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .nav-buttons a {
+      background: #ffd54f;
+      color: #333;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .nav-buttons a:hover {
+      background: #ffeb3b;
+      transform: scale(1.05);
     }
 
     footer {
@@ -82,6 +113,10 @@
       }
       .example, p {
         width: 90%;
+      }
+      .nav-buttons {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -113,6 +148,7 @@
     CSS makes websites <b>beautiful, accessible, and efficient</b>. It allows developers to design responsive layouts that work across devices. Without CSS, all web pages would look plain and text-heavy.
   </p>
 
+  <!-- Without CSS Example -->
   <div class="example">
     <h3>🔸 Without CSS:</h3>
     <pre>
@@ -120,8 +156,15 @@
 &lt;p&gt;This is a simple webpage.&lt;/p&gt;
 &lt;button&gt;Click Me&lt;/button&gt;
     </pre>
+
+    <div class="example-output">
+      <h1>Welcome to My Website</h1>
+      <p>This is a simple webpage.</p>
+      <button>Click Me</button>
+    </div>
   </div>
 
+  <!-- With CSS Example -->
   <div class="example">
     <h3>🔹 With CSS:</h3>
     <pre>
@@ -143,6 +186,12 @@ button {
   border: none;
 }
     </pre>
+
+    <div class="example-output" style="text-align:center;">
+      <h1 style="color:#4f46e5;">Welcome to My Website</h1>
+      <p style="font-size:18px; color:#555;">This is a simple webpage.</p>
+      <button style="background:gold; color:black; padding:10px 20px; border-radius:5px; border:none;">Click Me</button>
+    </div>
   </div>
 
   <div class="styled-box">
@@ -167,13 +216,19 @@ selector {
   <p>
     According to computer science education research and real-world developer experience:
   </p>
-  <ul style="text-align:left; display:inline-block; text-align:left; line-height:1.8; color:#fff;">
+  <ul style="text-align:left; display:inline-block; line-height:1.8; color:#fff;">
     <li>🎯 <b>Start small</b> — focus on mastering selectors, colors, and text first.</li>
     <li>🧩 <b>Practice by building</b> — recreate simple websites or UI elements.</li>
     <li>🔍 <b>Use DevTools</b> in browsers to inspect and tweak live code.</li>
     <li>📘 <b>Study patterns</b> — learn about Flexbox, Grid, and media queries early.</li>
     <li>🧠 <b>Review real websites</b> — analyze how professional sites use CSS.</li>
   </ul>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="index.html">⬅ Back to Home</a>
+    <a href="js.html">Next ➡</a>
+  </div>
 
   <footer>© 2025 CodeQuest | Learn Coding the Fun Way</footer>
 </body>

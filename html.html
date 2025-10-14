@@ -61,9 +61,15 @@
       font-style: italic;
     }
 
-    .back-btn {
-      display: inline-block;
-      margin-top: 30px;
+    /* Navigation Buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .nav-buttons a {
       background: #4f46e5;
       color: white;
       padding: 12px 20px;
@@ -73,8 +79,15 @@
       transition: 0.3s;
     }
 
-    .back-btn:hover {
+    .nav-buttons a:hover {
       background: #3730a3;
+    }
+
+    @media (max-width: 600px) {
+      .nav-buttons {
+        flex-direction: column;
+        gap: 15px;
+      }
     }
   </style>
 </head>
@@ -84,7 +97,6 @@
 
   <div class="content">
 
-    <!-- OLD CONTENT -->
     <h2>What is HTML?</h2>
     <p><strong>HTML</strong> stands for <strong>HyperText Markup Language</strong>. It is the standard language used to create and structure content on the World Wide Web. HTML describes how web pages are displayed by using elements and tags.</p>
 
@@ -115,7 +127,6 @@
     <h2>How to Input Commands</h2>
     <p>You can use any text editor such as <strong>Notepad</strong>, <strong>VS Code</strong>, or <strong>Sublime Text</strong> to write HTML code. Save your file with the <code>.html</code> extension and open it in any browser to see the result.</p>
 
-    <!-- NEW EXTENDED LEARNING CONTENT -->
     <h2>HTML Page Structure</h2>
     <p>An HTML page is divided into two main parts: the <code>&lt;head&gt;</code> and the <code>&lt;body&gt;</code>. The head contains meta information, while the body contains all the visible content of the webpage.</p>
 
@@ -199,7 +210,11 @@
       <li>Always include <code>alt</code> text in images.</li>
     </ul>
 
-    <a href="choose-quest.html" class="back-btn">← Back to Quests</a>
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <a href="index.html">← Back to Home</a>
+      <a href="css.html">Next →</a>
+    </div>
 
   </div>
 </body>
